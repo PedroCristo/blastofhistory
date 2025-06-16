@@ -7,7 +7,7 @@ function HeroSection() {
         <div className="container">
           <div className="row">
             <div className="col-md-6">
-              <h1 className="mb-3">Blast Of History Channel</h1>
+              <h1 className="mb-3 title">Blast Of History Channel</h1>
               <h3 className="mb-3">
                 Your gateway to thrilling historical stories and true events.
               </h3>

@@ -1,51 +1,77 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ReactPlayer from "react-player";
 
-function VideoCard({ cover, category, year, videoId }) {
+function VideoCard({
+  id,
+  cover,
+  category,
+  year,
+  videoId,
+  mt = false,
+  mode = "modal", // "modal" or "link"
+}) {
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
-  const handlePlay = () => {
-    setShowModal(true);
+  const handleClick = () => {
+    if (mode === "modal") {
+      setShowModal(true);
+    } else {
+      // link mode → go to details page
+      navigate(`/short/${id}`);
+    }
   };
 
-  const closeModal = () => {
-    setShowModal(false);
-  };
+  const closeModal = () => setShowModal(false);
+
+  const cardClasses = [
+    "video-card",
+    "position-relative",
+    "text-center",
+    mt ? "mt-5" : "",
+  ].join(" ");
 
   return (
-    <div className="video-card position-relative text-center">
-      <img
-        src={cover}
-        alt="Video Cover"
-        className="img-fluid rounded w-75"
-        onClick={handlePlay}
-        style={{ cursor: "pointer" }}
-      />
-      <button
-        className="btn btn-light position-absolute w-25"
-        onClick={handlePlay}
-        style={{
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          fontSize: "2rem",
-          opacity: 0.8,
-        }}
-      >
-        ▶
-      </button>
-      <div className="video-details">
-        <span>
-          <i className="bi bi-globe"></i> {category}
-        </span>
-        <span style={{ marginLeft: "10px" }}>
-          <i className="bi bi-calendar"></i> {year}
-        </span>
+    <>
+      <div className={cardClasses}>
+        <img
+          src={cover}
+          alt="Video Cover"
+          className="img-fluid rounded w-75"
+          onClick={handleClick}
+          style={{ cursor: "pointer" }}
+        />
+        <button
+          className="bt btn-ligh border-0 position-absolute w-50"
+          onClick={handleClick}
+          style={{
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            fontSize: "2rem",
+            opacity: 0.8,
+          }}
+        >
+          <img
+            className="w-50 translate-image"
+            src="/public/images/small/youtube-logo.png"
+            alt="Youtube Logo"
+            
+          />
+        </button>
+        <div className="video-details">
+          <span>
+            <i className="bi bi-globe interactive-color"></i> {category}
+          </span>
+          <span style={{ marginLeft: "10px" }}>
+            <i className="bi bi-calendar interactive-color"></i> {year}
+          </span>
+        </div>
       </div>
 
-      {/* Modal */}
-      {showModal && (
+      {mode === "modal" && showModal && (
         <div
           className="modal fade show"
           style={{ display: "block", backgroundColor: "rgba(0,0,0,0.8)" }}
@@ -63,7 +89,7 @@ function VideoCard({ cover, category, year, videoId }) {
                   type="button"
                   className="btn-close btn-close-white ms-auto"
                   onClick={closeModal}
-                ></button>
+                />
               </div>
               <div
                 className="modal-body p-0"
@@ -73,13 +99,6 @@ function VideoCard({ cover, category, year, videoId }) {
                   className="ratio mt-5 ratio-16x9"
                   style={{ height: "90%" }}
                 >
-                  {/* <iframe
-                    src={`https://www.youtube.com/embed/${videoId}`}
-                    title="YouTube video"
-                    allow="autoplay; encrypted-media"
-                    allowFullScreen
-                    style={{ width: "100%", height: "100%" }}
-                  ></iframe> */}
                   <ReactPlayer
                     url={`https://www.youtube.com/embed/${videoId}`}
                     controls
@@ -92,7 +111,7 @@ function VideoCard({ cover, category, year, videoId }) {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
 

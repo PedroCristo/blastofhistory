@@ -2,45 +2,62 @@ import { useState } from "react";
 import videos from "../../data/videos";
 import VideoCard from "../../components/VideoCard";
 
+// Normalize keys for matching bgImages and titles
+function normalizeKey(str) {
+  return str?.toUpperCase().replace(/[\s_]/g, "");
+}
+
+// Format for button and title display
+function formatLabel(str) {
+  return str
+    .replace(/_/g, " ")
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(" ");
+}
+
 function ShortsPage() {
   const categories = ["All", ...new Set(videos.map((v) => v.category))];
   const [selectedCategory, setSelectedCategory] = useState("All");
+
+  const normalizedCategory = normalizeKey(selectedCategory);
 
   const filteredVideos =
     selectedCategory === "All"
       ? videos
       : videos.filter((video) => video.category === selectedCategory);
 
-  // Map category to background image URL
   const bgImages = {
-    All: "/images/large/blast-of-history-banner-end-slide_1000PX.png",
-    WWI: "/images/bg/wwi-bg.jpg",
-    WWII: "/images/bg/wwii-bg.jpg",
-    // Add more categories and images here
+    ALL: "/images/large/blast-of-history-all-banner.png",
+    WWI: "/images/large/blast-of-history-WW1-banner.png",
+    WWII: "/images/large/blast-of-history-ww2-banner.png",
+    SKYLEGENDS: "/images/large/blast-of-history-sky-legends-banner.png",
+    CRIME: "/images/large/blast-of-history-crime-2-banner.png",
+    MISTERY: "/images/large/blast-of-history-mistery-banner.png",
+    AGEOFEXPLORATION: "/images/large/blast-of-history-age-of-exploration-banner.png",
   };
 
-  // Page titles for special cases
   const pageTitles = {
-    All: "All Shorts",
+    ALL: "All Shorts",
     WWI: "WWI Shorts",
     WWII: "WWII Shorts",
     MISTERY: "Mistery Shorts",
+    SKYLEGENDS: "Sky Legends Shorts",
+    CRIME: "Crime Shorts",
+    AGEOFEXPLORATION: "Age of Exploration Shorts",
   };
 
-  // Helper function to format category names into titles
-  function formatPageTitle(category) {
-    if (category === "All") return "All Shorts";
-    // Capitalize first letter, lowercase the rest + " Shorts"
-    return category.charAt(0).toUpperCase() + category.slice(1).toLowerCase() + " Shorts";
-  }
+  const backgroundUrl = bgImages[normalizedCategory] || bgImages["ALL"];
+  const pageTitle =
+    pageTitles[normalizedCategory] || `${formatLabel(selectedCategory)} Shorts`;
 
   return (
-    <div className="Shorts-page">
+    <div className="Shorts-page section">
       <section
         style={{
-          minHeight: "50vh",
+          minHeight: "40vh",
           padding: "20px",
-          backgroundImage: `url(${bgImages[selectedCategory] || bgImages["All"]})`,
+          backgroundImage: `url(${backgroundUrl})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -52,22 +69,22 @@ function ShortsPage() {
           position: "relative",
         }}
       >
-        <h1 className="mb-4 interactive-color title">
-          {pageTitles[selectedCategory] || formatPageTitle(selectedCategory)}
-        </h1>
+        <h1 className="mb-4 interactive-color title">{pageTitle}</h1>
         <div className="overlay"></div>
       </section>
 
-      <div className="d-flex justify-content-center mb-4 flex-wrap gap-2">
+      <div className="container-xxl d-flex justify-content-center flex-wrap gap-2 buttons-box">
         {categories.map((category) => (
           <button
             key={category}
-            className={`btn mb-5 ${
-              selectedCategory === category ? "btn-primary" : "btn-outline-primary"
+            className={`btn ${
+              selectedCategory === category
+                ? "btn-primary"
+                : "btn-outline-primary"
             }`}
             onClick={() => setSelectedCategory(category)}
           >
-            {category}
+            {formatLabel(category)}
           </button>
         ))}
       </div>
@@ -76,13 +93,16 @@ function ShortsPage() {
         {filteredVideos.map((video) => (
           <div
             key={video.id}
-            className="col-lg-3 col-md-6 col-sm-12 mb-4 d-flex justify-content-center"
+            className="col-lg-3 col-md-6 col-sm-12 mt-5 d-flex justify-content-center"
           >
             <VideoCard
+              id={video.id}
               cover={video.cover}
               category={video.category}
               year={video.year}
               videoId={video.videoId}
+              mode="link"
+              mt={true}
             />
           </div>
         ))}

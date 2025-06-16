@@ -6,9 +6,9 @@ function Navbar() {
     <nav className="navbar navbar-expand-lg fixed-top">
       <div className="container">
         {/* Logo on the left */}
-        <a className="navbar-brand" href="/">
+        <Link className="navbar-brand" to="/">
           <img src="images/small/blast-of-history-300x300.jpg" className="rounded-circle" alt="Blast of History Logo" height="90" />
-        </a>
+        </Link>
 
         {/* Navbar toggler for mobile */}
         <button

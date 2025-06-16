@@ -5,6 +5,7 @@ import HomePage from "./pages/en/homePage";
 import ContactPage from "./pages/en/ContactPage";
 import AboutPage from "./pages/en/AboutPage";
 import ShortsPage from "./pages/en/ShortsPage";
+import ShortsDetailsPage from "./pages/en/ShortsDetailsPage";
 
 function App() {
   // useEffect(() => {
@@ -32,6 +33,7 @@ function App() {
         <Route path="/contact-page" exact element={<ContactPage />} />
         <Route path="/about-page" exact element={<AboutPage />} />
         <Route path="/shorts-page" exact element={<ShortsPage />} />
+        <Route path="/short/:id" element={<ShortsDetailsPage />} />
       </Routes>
     </>
   );

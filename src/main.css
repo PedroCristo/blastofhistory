@@ -56,6 +56,10 @@ body {
   background-color: rgb(255, 255, 255) !important;
 }
 
+button {
+  background-color: transparent;
+}
+
 .set-bg {
   width: 100%;
   height: 100vh;
@@ -113,15 +117,27 @@ a:hover {
 }
 
 .overlay {
- position: absolute;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 50vh;
-  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
-  z-index: 10; /* make sure it's on top */
+  height: 40vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  /* semi-transparent black */
+  z-index: 10;
+  /* make sure it's on top */
 }
 
+.translate-image:hover {
+  transform: scale(1.1);
+  /* moves right 20px and down 10px */
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
+  color: white;
+  text-shadow: 2px 2px 4px black;
+}
 
 /*******************************
 *            NAVBAR           *
@@ -179,13 +195,12 @@ a:hover {
   z-index: 10;
   /* bring it above others if needed */
   box-shadow: 10px 8px 16px rgba(245, 244, 244, 0.3);
-  margin-top: -5px;
 }
 
 .video-details {
   position: absolute;
   margin: 0 auto;
-  width: 50%;
+  width: 70%;
   bottom: 5px;
   left: 5px;
   right: 5px;
@@ -246,11 +261,23 @@ div.contact-form {
 }
 
 /*******************************
-*            SHORTS PAGE       *
+*           SHORTS PAGE        *
 *******************************/
 .Shorts-page .btn {
-  width: 180px !important;
+  width: 230px !important;
   margin-top: 50px;
+}
+
+.buttons-box {
+  margin-bottom: -100px;
+}
+
+/*******************************
+*         SHORTS DETAILS       *
+*******************************/
+
+.shorts-details {
+  margin-top: -20px !important;
 }
 
 /*******************************

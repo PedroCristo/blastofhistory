@@ -1,0 +1,277 @@
+/********************************
+*        GOOGLE FONTS          *
+*******************************/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+
+/*******************************
+*        GENERAL STYLES        *
+*******************************/
+:root {
+
+  color-scheme: light dark;
+  --text-color-white: rgba(255, 255, 255, 0.87);
+  --background-color: rgb(34, 30, 30);
+  --light-background-color: rgb(49, 45, 45);
+  --interactive-color: #cf740b;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #221e1e !important;
+  overflow-x: hidden;
+}
+
+.container-100 {
+  height: 100vh;
+  padding: 50px 20px;
+  display: flex;
+  align-items: center;
+  /* vertical center */
+}
+
+.btn {
+  margin-top: 25px;
+  border: 1px solid rgb(240, 230, 230) !important;
+  width: 100%;
+  padding: 15px 25px !important;
+  color: white !important;
+  font-size: 1.1rem !important;
+  cursor: pointer;
+  border-radius: 0 !important;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease,
+}
+
+.btn:hover {
+  border: 1px solid rgb(32, 32, 32) !important;
+  color: rgb(32, 32, 32) !important;
+  background-color: rgb(255, 255, 255) !important;
+}
+
+.set-bg {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.title {
+  color: var(--interactive-color);
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  margin: 0 auto 50px;
+  z-index: 1000;
+}
+
+.sub-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+
+}
+
+.paragraph {
+  color: var(--text-color-white);
+  font-size: 1rem;
+  margin-top: 25px;
+}
+
+a {
+  text-decoration: none !important;
+  color: var(--text-color-white) !important;
+  transition: all ease-in 0.1s;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+.box-shadow {
+  box-shadow: 10px 8px 16px rgba(245, 244, 244, 0.3);
+}
+
+.interactive-color {
+  color: var(--interactive-color);
+}
+
+.section {
+  margin-top: 100px !important;
+  padding: 25px 10px;
+  color: var(--text-color-white);
+}
+
+.overlay {
+ position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50vh;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+  z-index: 10; /* make sure it's on top */
+}
+
+
+/*******************************
+*            NAVBAR           *
+*******************************/
+.navbar {
+  background-color: #ffffff !important;
+  position: fixed !important;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar img {
+  z-index: 100000;
+}
+
+.modal {
+  z-index: -1;
+}
+
+.navbar a {
+  color: var(--light-background-color) !important;
+}
+
+/*******************************
+*         HERO SECTION         *
+*******************************/
+
+#heroSection {
+  background-image: radial-gradient(circle at bottom, rgba(255, 255, 255, 0.5), transparent 40%), url(images/large/hero-section-1.png);
+}
+
+#heroSection .row {
+  width: 100%;
+  color: aliceblue;
+}
+
+/*******************************
+*          VIDEO CARD          *
+*******************************/
+
+#card-container {
+  padding-top: 25px;
+  margin-top: -1px !important;
+}
+
+.video-card {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin-top: -150px;
+  transition: all 3s ease-in-out !important;
+}
+
+.video-card img:hover {
+  z-index: 10;
+  /* bring it above others if needed */
+  box-shadow: 10px 8px 16px rgba(245, 244, 244, 0.3);
+  margin-top: -5px;
+}
+
+.video-details {
+  position: absolute;
+  margin: 0 auto;
+  width: 50%;
+  bottom: 5px;
+  left: 5px;
+  right: 5px;
+  color: white;
+  font-size: 15px;
+  /* you wrote resize: 15px, probably font-size */
+  background: rgba(0, 0, 0, 0.5);
+  /* translucent background for readability */
+  padding: 5px 10px;
+  border-radius: 5px;
+  /* optional text shadow for better readability */
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+}
+
+.video-details span {
+  margin: 0 10px;
+}
+
+.card-list .col-lg-3 {
+  margin-bottom: 250px;
+}
+
+/*******************************
+*           BANNER            *
+*******************************/
+
+.banner {
+  background-color: var(--light-background-color);
+  padding: 50px 0;
+}
+
+.banner img {
+  width: 35%;
+}
+
+/*******************************
+*           CONTACT-FORM       *
+*******************************/
+.contact-form {
+  color: var(--text-color-white);
+}
+
+div.contact-form {
+  margin-top: 200px !important;
+}
+
+/*******************************
+*          ABOUT SECTION      *
+*******************************/
+.about .title {
+  margin-top: 100px;
+}
+
+.about .sub-title {
+  font-family: "Kaushan Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: 700;
+}
+
+/*******************************
+*            SHORTS PAGE       *
+*******************************/
+.Shorts-page .btn {
+  width: 180px !important;
+  margin-top: 50px;
+}
+
+/*******************************
+*            FOOTER            *
+*******************************/
+
+footer {
+  background-image:
+    radial-gradient(circle, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.9) 100%),
+    url('/images/large/blast-of-history-banner-end-slide_1000PX.png');
+  background-attachment: initial !important;
+  height: 40vh !important;
+
+}
+
+.footer {
+  padding: 50px;
+  color: var(--text-color-white);
+  height: 40vh !important;
+}
+
+.footer i {
+  font-size: 1rem !important;
+}

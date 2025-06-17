@@ -57,6 +57,15 @@ function Footer() {
               >
                 <i className="bi bi-facebook interactive-color"></i> Facebook
               </a>
+              <a
+                href="https://buymeacoffee.com/mediacreations"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ display: "flex", alignItems: "center", gap: "8px" }}
+                className="mb-2"
+              >
+                <i className="bi bi-cup-straw interactive-color"></i> Buy me a Coffee
+              </a>
             </div>
             <hr className="mt-5" />
             <div className="copyright">

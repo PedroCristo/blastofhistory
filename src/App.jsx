@@ -5,7 +5,9 @@ import HomePage from "./pages/en/homePage";
 import ContactPage from "./pages/en/ContactPage";
 import AboutPage from "./pages/en/AboutPage";
 import ShortsPage from "./pages/en/ShortsPage";
-import ShortsDetailsPage from "./pages/en/ShortsDetailsPage";
+import ShortsDetailsPage from "./pages/en/ShortDetailsPage";
+import VideosPage from "./pages/en/VideosPage";
+import VideoDetailsPage from "./pages/en/videoDetailsPage";
 
 function App() {
   // useEffect(() => {
@@ -33,7 +35,10 @@ function App() {
         <Route path="/contact-page" exact element={<ContactPage />} />
         <Route path="/about-page" exact element={<AboutPage />} />
         <Route path="/shorts-page" exact element={<ShortsPage />} />
+        <Route path="/shorts-page" exact element={<ShortsPage />} />
         <Route path="/short/:id" element={<ShortsDetailsPage />} />
+        <Route path="/videos-page" exact element={<VideosPage />} />
+        <Route path="/video/:id" element={<VideoDetailsPage type="video" />} />
       </Routes>
     </>
   );

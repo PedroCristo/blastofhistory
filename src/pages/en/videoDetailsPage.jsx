@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import videos from "../../data/videos";
 import VideoCard from "../../components/VideoCard";
 
-function ShortsDetailsPage() {
+function VideoDetailsPage() {
   // 1. Get the :id param
   const { id } = useParams();
 
@@ -17,7 +17,7 @@ function ShortsDetailsPage() {
     <div className="container section shorts-details">
       <div className="row align-items-center">
         {/* Text Section */}
-        <div className="col-md-8">
+        <div className="col-md-7">
           <h2 className="interactive-color mb-3 title">{video.title}</h2>
           <h4 className="mb-4 subtitle">{video.subTitle}</h4>
           <h5 className="text-secondary mb-4">
@@ -25,7 +25,15 @@ function ShortsDetailsPage() {
               <i className="bi bi-tags me-1 interactive-color"></i>
               {video.category}
             </span>
-            <span>
+            <span className="me-3">
+              <i
+                className={`bi me-1 interactive-color ${
+                  video.type === "shorts" ? "bi-phone" : "bi-tv"
+                }`}
+              ></i>
+              {video.type}
+            </span>
+            <span className="me-3">
               <i className="bi bi-calendar-event me-1 interactive-color"></i>
               <span className="me-2">{video.year}</span>
             </span>
@@ -46,7 +54,7 @@ function ShortsDetailsPage() {
 
         {/* VideoCard Section */}
         <div
-          className="col-md-4 d-flex justify-content-center align-items-center mt-5"
+          className="col-md-5 d-flex justify-content-center align-items-center mt-5"
           style={{ minHeight: "100vh" }}
         >
           <VideoCard
@@ -64,4 +72,4 @@ function ShortsDetailsPage() {
   );
 }
 
-export default ShortsDetailsPage;
+export default VideoDetailsPage;

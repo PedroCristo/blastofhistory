@@ -16,16 +16,24 @@ function formatLabel(str) {
     .join(" ");
 }
 
-function ShortsPage() {
-  const categories = ["All", ...new Set(videos.map((v) => v.category))];
+function VideosPage() {
+  // Only include categories that contain at least one video of type "Video"
+  const videoCategories = [
+    ...new Set(videos.filter((v) => v.type === "Video").map((v) => v.category)),
+  ];
+  const categories = ["All", ...videoCategories];
+
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const normalizedCategory = normalizeKey(selectedCategory);
 
   const filteredVideos =
     selectedCategory === "All"
-      ? videos
-      : videos.filter((video) => video.category === selectedCategory);
+      ? videos.filter((video) => video.type === "Video")
+      : videos.filter(
+          (video) =>
+            video.type === "Video" && video.category === selectedCategory
+        );
 
   const bgImages = {
     ALL: "/images/large/blast-of-history-all-2-banner.png",
@@ -40,21 +48,21 @@ function ShortsPage() {
   };
 
   const pageTitles = {
-    ALL: "All Shorts",
-    WWI: "WWI Shorts",
-    WWII: "WWII Shorts",
-    MISTERY: "Mistery Shorts",
-    SKYLEGENDS: "Sky Legends Shorts",
-    CRIME: "Crime Shorts",
-    AGEOFEXPLORATION: "Age of Exploration Shorts",
+    ALL: "All Videos",
+    WWI: "WWI Videos",
+    WWII: "WWII Videos",
+    MISTERY: "Mystery Videos",
+    SKYLEGENDS: "Sky Legends Videos",
+    CRIME: "Crime Videos",
+    AGEOFEXPLORATION: "Age of Exploration Videos",
   };
 
   const backgroundUrl = bgImages[normalizedCategory] || bgImages["ALL"];
   const pageTitle =
-    pageTitles[normalizedCategory] || `${formatLabel(selectedCategory)} Shorts`;
+    pageTitles[normalizedCategory] || `${formatLabel(selectedCategory)} Videos`;
 
   return (
-    <div className="Shorts-page section p-0">
+    <div className="Videos-page section p-0">
       <section
         className="zoom-background"
         style={{
@@ -85,27 +93,31 @@ function ShortsPage() {
         ))}
       </div>
 
-      <div className="row section">
-        {filteredVideos.map((video) => (
-          <div
-            key={video.id}
-            className="col-lg-3 col-md-6 col-sm-12 mt-5 d-flex justify-content-center"
-          >
-            <VideoCard
-              id={video.id}
-              cover={video.cover}
-              category={video.category}
-              year={video.year}
-              videoId={video.videoId}
-              mode="link"
-              type="shorts" // ✅ This is required!
-              mt={true}
-            />
-          </div>
-        ))}
-      </div>
+      {filteredVideos.length === 0 ? (
+        <p className="text-center mt-5">No videos found in this category.</p>
+      ) : (
+        <div className="row section">
+          {filteredVideos.map((video) => (
+            <div
+              key={video.id}
+              className="col-lg-3 col-md-6 col-sm-12 mt-2 mb-5 d-flex justify-content-center"
+            >
+              <VideoCard
+                id={video.id}
+                cover={video.cover}
+                category={video.category}
+                year={video.year}
+                videoId={video.videoId}
+                type={video.type} // ✅ IMPORTANT
+                mode="link"
+                mt={true}
+              />
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
 
-export default ShortsPage;
+export default VideosPage;

@@ -18,6 +18,7 @@ function VideoCardList({ showFeaturedOnly = false }) {
             category={video.category}
             year={video.year}
             videoId={video.videoId}
+            type="shorts"
             mode="modal"
           />
         </div>

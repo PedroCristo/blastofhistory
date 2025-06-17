@@ -5,6 +5,7 @@ import ReactPlayer from "react-player";
 
 function VideoCard({
   id,
+  type,
   cover,
   category,
   year,
@@ -19,8 +20,9 @@ function VideoCard({
     if (mode === "modal") {
       setShowModal(true);
     } else {
-      // link mode → go to details page
-      navigate(`/short/${id}`);
+      // Navigate to dynamic path based on type
+      const routeType = type.toLowerCase() === "shorts" ? "short" : "video";
+      navigate(`/${routeType}/${id}`);
     }
   };
 
@@ -39,9 +41,16 @@ function VideoCard({
         <img
           src={cover}
           alt="Video Cover"
-          className="img-fluid rounded w-75"
+          className={`img-fluid rounded ${
+            type === "shorts" ? "w-75" : "w-100"
+          }`}
           onClick={handleClick}
-          style={{ cursor: "pointer" }}
+          style={{
+            cursor: "pointer",
+            width: "120%",
+            height: "auto",
+            transform: "scale(1.3)",
+          }}
         />
         <button
           className="bt btn-ligh border-0 position-absolute w-50"
@@ -58,7 +67,6 @@ function VideoCard({
             className="w-50 translate-image"
             src="/public/images/small/youtube-logo.png"
             alt="Youtube Logo"
-            
           />
         </button>
         <div className="video-details">

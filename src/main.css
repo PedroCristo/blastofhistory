@@ -344,15 +344,25 @@ div.contact-form {
   height: auto;
   transform: scale(1.4);
   cursor: pointer;
-  margin-left: 50px;
+  margin-left: 40x;
   margin-top: -55px;
-  
+}
+/*******************************
+*            PAGE 404          *
+*******************************/
+
+.page-404 {
+  background-image: url('/images/large/blast-of-history-404-page.png');
 }
 
+.page-404 .content-box h1.title {
+  font-size: 15rem;
+}
 
 /*******************************
 *            FOOTER            *
 *******************************/
+
 
 footer {
   background-image:

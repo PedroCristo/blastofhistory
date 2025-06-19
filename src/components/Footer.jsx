@@ -14,6 +14,8 @@ function Footer() {
                 className="rounded-circle w-25"
                 alt="Blast of History Logo"
                 height="90"
+                width="90"
+                
               />
             </div>
             <div className="col-md-4">

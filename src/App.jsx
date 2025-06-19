@@ -8,6 +8,7 @@ import ShortsPage from "./pages/en/ShortsPage";
 import ShortsDetailsPage from "./pages/en/ShortDetailsPage";
 import VideosPage from "./pages/en/VideosPage";
 import VideoDetailsPage from "./pages/en/videoDetailsPage";
+import PageNotFound from "./pages/error/404";
 
 function App() {
   // useEffect(() => {
@@ -37,7 +38,8 @@ function App() {
         <Route path="/shorts-page" exact element={<ShortsPage />} />
         <Route path="/short/:id" element={<ShortsDetailsPage />} />
         <Route path="/videos-page" exact element={<VideosPage />} />
-        <Route path="/video/:id" element={<VideoDetailsPage type="video" />} />
+        <Route path="/video/:id" element={<VideoDetailsPage type="video" />} />´
+        <Route path="*" exact element={<PageNotFound />} />
       </Routes>
     </>
   );

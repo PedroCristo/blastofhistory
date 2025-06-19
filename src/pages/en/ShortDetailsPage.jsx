@@ -1,17 +1,75 @@
 import { useParams } from "react-router-dom";
-import videos from "../../data/videos";
+import { useEffect, useState } from "react";
 import VideoCard from "../../components/VideoCard";
+import { doc, getDoc, collection, getDocs } from "firebase/firestore";
+import { db } from "../../data/firebaseConfig"; // adjust the path if needed
 
 function ShortsDetailsPage() {
-  // 1. Get the :id param
-  const { id } = useParams();
+  // Get id param from URL
+  const { id: rawId } = useParams();
 
-  // 2. Find the matching video
-  const video = videos.find((v) => String(v.id) === id);
+  // Clean string helper to remove extra quotes and trim spaces
+  const cleanString = (str) => {
+    if (typeof str === "string") {
+      return str.replace(/^"(.*)"$/, "$1").trim();
+    }
+    return str;
+  };
+
+  const id = cleanString(rawId);
+
+  const [video, setVideo] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Fetch single video by ID
+  useEffect(() => {
+    async function fetchVideo() {
+      setLoading(true);
+      try {
+        const docRef = doc(db, "shorts", id);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          const videoData = { id: docSnap.id, ...docSnap.data() };
+          console.log("Fetched video:", videoData);
+          setVideo(videoData);
+          setError(null);
+        } else {
+          setVideo(null);
+          setError(new Error("Video not found"));
+        }
+      } catch (err) {
+        setError(err);
+        setVideo(null);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    if (id) fetchVideo();
+  }, [id]);
+
+  // Optional: Fetch all videos and log once on mount
+  useEffect(() => {
+    async function fetchAllVideos() {
+      try {
+        const querySnapshot = await getDocs(collection(db, "shorts"));
+        const allVideos = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        console.log("All videos in collection:", allVideos);
+      } catch (err) {
+        console.error("Error fetching all videos:", err);
+      }
+    }
+
+    fetchAllVideos();
+  }, []);
+
+  if (loading) return <p>Loading video...</p>;
+  if (error) return <p>Error loading video: {error.message}</p>;
   if (!video) return <p>Video not found</p>;
 
-  // 3. Split description into paragraphs
-  const paragraphs = video.description.split("\n\n");
+  const paragraphs = video.description?.split("\n\n") || [];
 
   return (
     <div className="container section shorts-details">
@@ -25,23 +83,34 @@ function ShortsDetailsPage() {
               <i className="bi bi-tags me-1 interactive-color"></i>
               {video.category}
             </span>
-            <span>
+            <span className="me-3">
               <i className="bi bi-calendar-event me-1 interactive-color"></i>
               <span className="me-2">{video.year}</span>
+            </span>
+            <span className="me-3">
+              <i
+                className={`bi me-1 interactive-color ${
+                  video.type?.toLowerCase() === "shorts" ? "bi-phone" : "bi-tv"
+                }`}
+              ></i>
+              {video.type}
             </span>
             <span>
               <i className="bi bi-camera-reels interactive-color me-1"></i>
               {video.edition}
             </span>
           </h5>
-
           {paragraphs.map((p, i) => (
-            <p key={i}>{p}</p>
+            <p key={i} style={{ marginBottom: "0.75rem" }}>
+              {p}
+            </p>
           ))}
 
-          <span className="text-secondary sub-title box-shadow p-4 mt-4 d-inline-block">
-            {video.additionalInfo}
-          </span>
+          {video.additionalInfo && (
+            <span className="text-secondary sub-title box-shadow p-4 mt-4 d-inline-block">
+              {video.additionalInfo}
+            </span>
+          )}
         </div>
 
         {/* VideoCard Section */}
@@ -58,6 +127,7 @@ function ShortsDetailsPage() {
             mode="modal"
             type="shorts"
             mt={true}
+            detailsPage={true}
           />
         </div>
       </div>

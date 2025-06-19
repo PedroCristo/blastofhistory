@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -9,7 +10,10 @@ function VideoCard({
   cover,
   category,
   year,
+  title,
   videoId,
+  videoDetails,
+  detailsPage,
   mt = false,
   mode = "modal", // "modal" or "link"
 }) {
@@ -20,7 +24,6 @@ function VideoCard({
     if (mode === "modal") {
       setShowModal(true);
     } else {
-      // Navigate to dynamic path based on type
       const routeType = type.toLowerCase() === "shorts" ? "short" : "video";
       navigate(`/${routeType}/${id}`);
     }
@@ -33,28 +36,26 @@ function VideoCard({
     "position-relative",
     "text-center",
     mt ? "mt-5" : "",
+    type === "video" ? "expanded" : "",
   ].join(" ");
 
   return (
     <>
-      <div className={cardClasses}>
+      <div className={cardClasses} onClick={handleClick}>
         <img
           src={cover}
           alt="Video Cover"
           className={`img-fluid rounded ${
             type === "shorts" ? "w-75" : "w-100"
-          }`}
-          onClick={handleClick}
-          style={{
-            cursor: "pointer",
-            width: "120%",
-            height: "auto",
-            transform: "scale(1.3)",
-          }}
+          } ${videoDetails === true ? "video-detail-img-big" : ""}`}
         />
+
         <button
-          className="bt btn-ligh border-0 position-absolute w-50"
-          onClick={handleClick}
+          className="bt btn-light border-0 position-absolute w-50"
+          onClick={(e) => {
+            e.stopPropagation(); // Prevent button click from bubbling to parent
+            handleClick();
+          }}
           style={{
             top: "50%",
             left: "50%",
@@ -65,10 +66,24 @@ function VideoCard({
         >
           <img
             className="w-50 translate-image"
-            src="/public/images/small/youtube-logo.png"
+            src="/images/small/youtube-logo.png"
             alt="Youtube Logo"
           />
         </button>
+
+        <div className="video-details video-details-top">
+            <div className={detailsPage ? "" : "container-title"}>
+            <span className="sub-title bebas-neue-regular">
+              {(title || "").split(":").map((part, index, arr) => (
+                <React.Fragment key={index}>
+                  {part.trim()}
+                  {index !== arr.length - 1 && <br />}
+                </React.Fragment>
+              ))}
+            </span>
+          </div>
+        </div>
+
         <div className="video-details">
           <span>
             <i className="bi bi-globe interactive-color"></i> {category}

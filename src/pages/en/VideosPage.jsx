@@ -1,14 +1,15 @@
-import { useState } from "react";
-import videos from "../../data/videos";
+import { useState, useEffect } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../data/firebaseConfig";
 import VideoCard from "../../components/VideoCard";
 
 // Normalize keys for matching bgImages and titles
-function normalizeKey(str) {
-  return str?.toUpperCase().replace(/[\s_]/g, "");
+function normalizeKey(str = "") {
+  return str.toUpperCase().replace(/[\s_]/g, "");
 }
 
 // Format for button and title display
-function formatLabel(str) {
+function formatLabel(str = "") {
   return str
     .replace(/_/g, " ")
     .split(" ")
@@ -16,23 +17,67 @@ function formatLabel(str) {
     .join(" ");
 }
 
-function VideosPage() {
-  // Only include categories that contain at least one video of type "Video"
-  const videoCategories = [
-    ...new Set(videos.filter((v) => v.type === "Video").map((v) => v.category)),
-  ];
-  const categories = ["All", ...videoCategories];
+// Helper function to clean strings of extra quotes and trim
+const cleanString = (str) => {
+  if (typeof str === "string") {
+    return str.replace(/^"(.*)"$/, "$1").trim();
+  }
+  return str;
+};
 
+function VideosPage() {
+  const [videos, setVideos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("All");
 
+  useEffect(() => {
+    async function fetchVideos() {
+      setLoading(true);
+      try {
+        const querySnapshot = await getDocs(collection(db, "videos"));
+        const videoData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        console.log("Fetched videos:", videoData); // <-- ADD THIS
+
+        setVideos(videoData);
+      } catch (err) {
+        setError(err);
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchVideos();
+  }, []);
+
+  const cleanedVideos = videos
+    .filter((v) => (v.type || "").toLowerCase() === "video")
+    .map((video) => ({
+      ...video,
+      id: video.id,
+      category: cleanString(video.category),
+      cover: cleanString(video.cover),
+      year: video.year,
+      videoId: cleanString(video.videoId),
+      subTitle: cleanString(video.subTitle),
+      title: cleanString(video.title),
+    }));
+
+  const videoCategories = [
+    ...new Set(cleanedVideos.map((v) => v.category).filter(Boolean)),
+  ];
+  const categories = ["All", ...videoCategories];
   const normalizedCategory = normalizeKey(selectedCategory);
 
   const filteredVideos =
     selectedCategory === "All"
-      ? videos.filter((video) => video.type === "Video")
-      : videos.filter(
-          (video) =>
-            video.type === "Video" && video.category === selectedCategory
+      ? cleanedVideos
+      : cleanedVideos.filter(
+          (video) => normalizeKey(video.category) === normalizedCategory
         );
 
   const bgImages = {
@@ -60,6 +105,9 @@ function VideosPage() {
   const backgroundUrl = bgImages[normalizedCategory] || bgImages["ALL"];
   const pageTitle =
     pageTitles[normalizedCategory] || `${formatLabel(selectedCategory)} Videos`;
+
+  if (loading) return <p>Loading videos...</p>;
+  if (error) return <p>Error loading videos: {error.message}</p>;
 
   return (
     <div className="Videos-page section p-0">
@@ -108,7 +156,8 @@ function VideosPage() {
                 category={video.category}
                 year={video.year}
                 videoId={video.videoId}
-                type={video.type} // ✅ IMPORTANT
+                type={video.type}
+                detailsPage={true}
                 mode="link"
                 mt={true}
               />

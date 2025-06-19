@@ -1,17 +1,43 @@
 import { useParams } from "react-router-dom";
-import videos from "../../data/videos";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../data/firebaseConfig";
+import { useEffect, useState } from "react";
 import VideoCard from "../../components/VideoCard";
 
 function VideoDetailsPage() {
-  // 1. Get the :id param
   const { id } = useParams();
+  const [video, setVideo] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // 2. Find the matching video
-  const video = videos.find((v) => String(v.id) === id);
-  if (!video) return <p>Video not found</p>;
+  useEffect(() => {
+    async function fetchVideo() {
+      setLoading(true);
+      try {
+        const docRef = doc(db, "videos", id);
+        const docSnap = await getDoc(docRef);
 
-  // 3. Split description into paragraphs
-  const paragraphs = video.description.split("\n\n");
+        if (docSnap.exists()) {
+          setVideo({ id: docSnap.id, ...docSnap.data() });
+        } else {
+          setError("Video not found");
+        }
+      } catch (err) {
+        setError("Error fetching video");
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchVideo();
+  }, [id]);
+
+  if (loading) return <p>Loading video...</p>;
+  if (error) return <p>{error}</p>;
+  if (!video) return null;
+
+  const paragraphs = video.description ? video.description.split("\n\n") : [];
 
   return (
     <div className="container section shorts-details">
@@ -47,9 +73,11 @@ function VideoDetailsPage() {
             <p key={i}>{p}</p>
           ))}
 
-          <span className="text-secondary sub-title box-shadow p-4 mt-4 d-inline-block">
-            {video.additionalInfo}
-          </span>
+          {video.additionalInfo && (
+            <span className="text-secondary sub-title box-shadow p-4 mt-4 d-inline-block">
+              {video.additionalInfo}
+            </span>
+          )}
         </div>
 
         {/* VideoCard Section */}
@@ -65,6 +93,8 @@ function VideoDetailsPage() {
             videoId={video.videoId}
             mode="modal"
             mt={true}
+            videoDetails={true}
+            detailsPage={true}
           />
         </div>
       </div>

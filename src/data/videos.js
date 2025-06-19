@@ -10,6 +10,7 @@ const videos = [
     year: 1944,
     videoId: "qeYigtQccLE",
     featured: false,
+    show: true,
     additionalInfo: "Famous American fighter plane",
     description: "The P-51 Mustang was a game-changer in World War II. Designed for long-range missions, it escorted Allied bombers deep into enemy territory and provided unmatched protection in the skies.\n\nIts speed, agility, and firepower made it one of the most feared aircraft of the war. Pilots praised its handling, and historians recognize it as a key factor in achieving air superiority over Europe."
   },

@@ -35,7 +35,6 @@ function App() {
         <Route path="/contact-page" exact element={<ContactPage />} />
         <Route path="/about-page" exact element={<AboutPage />} />
         <Route path="/shorts-page" exact element={<ShortsPage />} />
-        <Route path="/shorts-page" exact element={<ShortsPage />} />
         <Route path="/short/:id" element={<ShortsDetailsPage />} />
         <Route path="/videos-page" exact element={<VideosPage />} />
         <Route path="/video/:id" element={<VideoDetailsPage type="video" />} />

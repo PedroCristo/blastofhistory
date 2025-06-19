@@ -44,7 +44,7 @@ function VideoCard({
       <div className={cardClasses} onClick={handleClick}>
         <img
           src={cover}
-          alt="Video Cover"
+          alt={`${title} Video Cover`}
           className={`img-fluid rounded ${
             type === "shorts" ? "w-75" : "w-100"
           } ${videoDetails === true ? "video-detail-img-big" : ""}`}
@@ -72,7 +72,7 @@ function VideoCard({
         </button>
 
         <div className="video-details video-details-top">
-            <div className={detailsPage ? "" : "container-title"}>
+          <div className={detailsPage ? "" : "container-title"}>
             <span className="sub-title bebas-neue-regular">
               {(title || "").split(":").map((part, index, arr) => (
                 <React.Fragment key={index}>

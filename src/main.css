@@ -352,7 +352,7 @@ div.contact-form {
 *******************************/
 
 .page-404 {
-  background-image: url('/images/large/blast-of-history-404-page.png');
+  background-image: url(/images/large/blast-of-history-404-page.png);
 }
 
 .page-404 .content-box h1.title {

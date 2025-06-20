@@ -57,13 +57,14 @@ function VideoCardList({ showFeaturedOnly = false }) {
     : videos;
 
   return (
-    <div className="card-list d-flex flex-wrap justify-content-center">
+    <div className="container-fluid">
+    <div className="row card-list d-flex flex-wrap justify-content-center">
       {filteredVideos.map((video) => {
         const cleanUrl = video.cover ? video.cover.trim() : "";
         return (
           <div
             key={video.id}
-            className="col-lg-3 col-md-6 col-sm-12 text-center"
+            className="col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center"
           >
             <VideoCard
               id={video.id}
@@ -78,6 +79,8 @@ function VideoCardList({ showFeaturedOnly = false }) {
           </div>
         );
       })}
+    </div>
+
     </div>
   );
 }

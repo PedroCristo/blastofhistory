@@ -78,7 +78,7 @@ button {
 
 .title {
   color: var(--interactive-color);
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 800;
   margin-bottom: 50px;
   text-transform: uppercase;
@@ -250,7 +250,7 @@ a:hover {
 }
 
 .card-list .col-lg-3 {
-  margin-bottom: 250px;
+  margin-bottom: 200px;
 }
 
 .video-details-top {
@@ -280,10 +280,12 @@ a:hover {
 .banner {
   background-color: var(--light-background-color);
   padding: 50px 0;
+  margin-top: -50px;
 }
 
-.banner img {
-  width: 35%;
+.banner .title {
+  font-size: 2.5rem;
+  padding: 25px;
 }
 
 /*******************************
@@ -320,7 +322,7 @@ div.contact-form {
 }
 
 .buttons-box {
-  margin-bottom: -100px;
+  margin-bottom: -120px;
 }
 
 /*******************************
@@ -328,7 +330,12 @@ div.contact-form {
 *******************************/
 
 .shorts-details {
-  margin-top: -20px !important;
+  margin-top: 00px !important;
+}
+.shorts-details .title,
+.video-details .title {
+ font-size: 2.5rem;
+
 }
 
 .Shorts-page .set-bg {
@@ -337,16 +344,21 @@ div.contact-form {
 }
 
 /*******************************
-*         SHORTS DETAILS       *
+*         VIDEO DETAILS       *
 *******************************/
 .video-detail-img-big {
   width: 120%;
   height: auto;
-  transform: scale(1.4);
+  transform: scale(1.35);
   cursor: pointer;
-  margin-left: 40x;
+  margin-left: 50px !important;
   margin-top: -55px;
 }
+
+.video-container .paragraph {
+  width: 98% !important;
+}
+
 /*******************************
 *            PAGE 404          *
 *******************************/
@@ -369,16 +381,20 @@ footer {
     radial-gradient(circle, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.9) 100%),
     url('/images/large/blast-of-history-banner-end-slide_1000PX.png');
   background-attachment: initial !important;
-  height: 40vh !important;
+  height: auto !important;
 
 }
 
 .footer {
   padding: 50px;
   color: var(--text-color-white);
-  height: 40vh !important;
 }
 
 .footer i {
   font-size: 1rem !important;
+}
+
+.footer img {
+  width: auto;
+  height: auto;
 }

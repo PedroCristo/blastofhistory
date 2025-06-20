@@ -3,7 +3,7 @@ function Footer() {
   return (
     <div>
       <footer className="container-fluid set-bg">
-        <div className="container footer">
+        <div className="footer">
           <div className="row">
             <div className="col-md-4">
               <h3 className="mb-5 interactive-color">

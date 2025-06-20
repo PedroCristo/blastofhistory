@@ -114,8 +114,11 @@ function VideosPage() {
       <section
         className="zoom-background"
         style={{
-          minHeight: "50vh",
           backgroundImage: `url(${backgroundUrl})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "scroll",
         }}
       >
         <div className="zoom-bg-layer" />

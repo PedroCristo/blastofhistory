@@ -40,37 +40,47 @@ function VideoDetailsPage() {
   const paragraphs = video.description ? video.description.split("\n\n") : [];
 
   return (
-    <div className="container section shorts-details">
-      <div className="row align-items-center">
+    <div className="container section shorts-details video-container">
+      <div className="row row-reverse-992px align-items-center">
         {/* Text Section */}
-        <div className="col-md-7">
+        <div className="col-md-7 col-100">
           <h2 className="interactive-color mb-3 title">{video.title}</h2>
           <h4 className="mb-4 subtitle">{video.subTitle}</h4>
-          <h5 className="text-secondary mb-4">
-            <span className="me-3">
-              <i className="bi bi-tags me-1 interactive-color"></i>
-              {video.category}
-            </span>
-            <span className="me-3">
-              <i
-                className={`bi me-1 interactive-color ${
-                  video.type === "shorts" ? "bi-phone" : "bi-tv"
-                }`}
-              ></i>
-              {video.type}
-            </span>
-            <span className="me-3">
-              <i className="bi bi-calendar-event me-1 interactive-color"></i>
-              <span className="me-2">{video.year}</span>
-            </span>
-            <span>
-              <i className="bi bi-camera-reels interactive-color me-1"></i>
-              {video.edition}
-            </span>
-          </h5>
+
+          {/* Info Grid */}
+          <div className="row text-start mb-4">
+            <div className="col-6 col-md-auto mb-2">
+              <span className="me-3">
+                <i className="bi bi-tags me-1 interactive-color"></i>
+                {video.category}
+              </span>
+            </div>
+            <div className="col-6 col-md-auto mb-2">
+              <span className="me-3">
+                <i
+                  className={`bi me-1 interactive-color ${
+                    video.type === "shorts" ? "bi-phone" : "bi-tv"
+                  }`}
+                ></i>
+                {video.type}
+              </span>
+            </div>
+            <div className="col-6 col-md-auto mb-2">
+              <span className="me-3">
+                <i className="bi bi-calendar-event me-1 interactive-color"></i>
+                <span className="me-2">{video.year}</span>
+              </span>
+            </div>
+            <div className="col-6 col-md-auto mb-2">
+              <span>
+                <i className="bi bi-camera-reels interactive-color me-1"></i>
+                {video.edition}
+              </span>
+            </div>
+          </div>
 
           {paragraphs.map((p, i) => (
-            <p key={i}>{p}</p>
+            <p className="paragraph" key={i}>{p}</p>
           ))}
 
           {video.additionalInfo && (
@@ -82,7 +92,7 @@ function VideoDetailsPage() {
 
         {/* VideoCard Section */}
         <div
-          className="col-md-5 d-flex justify-content-center align-items-center mt-5"
+          className="col-md-5 video-box col-100 d-flex justify-content-center align-items-center mt-5"
           style={{ minHeight: "100vh" }}
         >
           <VideoCard

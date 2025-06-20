@@ -73,9 +73,9 @@ function ShortsDetailsPage() {
 
   return (
     <div className="container section shorts-details">
-      <div className="row align-items-center">
+      <div className="row row-reverse-992px align-items-center">
         {/* Text Section */}
-        <div className="col-md-8">
+        <div className="col-100 col-md-8">
           <h2 className="interactive-color mb-3 title">{video.title}</h2>
           <h4 className="mb-4 subtitle">{video.subTitle}</h4>
           <h5 className="text-secondary mb-4">
@@ -115,7 +115,7 @@ function ShortsDetailsPage() {
 
         {/* VideoCard Section */}
         <div
-          className="col-md-4 d-flex justify-content-center align-items-center mt-5"
+          className="video-box col-100 col-md-4 d-flex justify-content-center align-items-center mt-5"
           style={{ minHeight: "100vh" }}
         >
           <VideoCard

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import VideoCard from "../../components/VideoCard";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../data/firebaseConfig"; // Make sure this path is correct!
+import { db } from "../../data/firebaseConfig";
 
 // Normalize keys for matching bgImages and titles
 function normalizeKey(str = "") {
@@ -51,7 +51,6 @@ function ShortsPage() {
     fetchVideos();
   }, []);
 
-  // Clean strings for all videos
   const cleanedVideos = videos.map((video) => ({
     ...video,
     id: video.id,
@@ -63,10 +62,11 @@ function ShortsPage() {
     title: cleanString(video.title),
   }));
 
-  // Get categories dynamically from cleaned videos
   const categories = [
     "All",
-    ...Array.from(new Set(cleanedVideos.map((v) => v.category).filter(Boolean))),
+    ...Array.from(
+      new Set(cleanedVideos.map((v) => v.category).filter(Boolean))
+    ),
   ];
 
   const normalizedCategory = normalizeKey(selectedCategory);
@@ -112,8 +112,11 @@ function ShortsPage() {
       <section
         className="zoom-background"
         style={{
-          minHeight: "50vh",
           backgroundImage: `url(${backgroundUrl})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "scroll",
         }}
       >
         <div className="zoom-bg-layer" />
@@ -123,7 +126,7 @@ function ShortsPage() {
         </div>
       </section>
 
-      <div className="container-xxl d-flex justify-content-center flex-wrap gap-2 buttons-box">
+      <div className="container-xxl d-flex justify-content-center flex-wrap gap-1 buttons-box">
         {categories.map((category) => (
           <button
             key={category}

@@ -8,11 +8,11 @@ function Banner({ title, image1, alt1, text1, image2, alt2, text2 }) {
          <h2 className="title box-shadow w-75 pt-2 pb-2 mrgin-0 text-center">{title}</h2>
           <div className="row">
             <div className="col-md-6 d-flex justify-content-center flex-column align-items-center">
-              <img className="box-shadow" src={image1} alt={alt1} />
+              <img className="box-shadow w-50" src={image1} alt={alt1} />
               <span className="w-75 paragraph">{text1}</span>
             </div>
             <div className="col-md-6 d-flex justify-content-center flex-column align-items-center">
-              <img className="box-shadow" src={image2} alt={alt2} />
+              <img className="box-shadow w-50" src={image2} alt={alt2} />
               <span className="w-75 paragraph">{text2}</span>
             </div>
           </div>

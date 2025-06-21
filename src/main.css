@@ -114,7 +114,7 @@ a:hover {
 }
 
 .interactive-color {
-  color: var(--interactive-color);
+  color: var(--interactive-color) !important;
 }
 
 .interactive-bg {
@@ -387,6 +387,37 @@ div.contact-form {
   width: 98% !important;
 }
 
+.zoom-background {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 40vh;
+  margin-top: -100px;
+}
+
+.zoom-bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 110%;
+  background-position: center -100px;
+  background-repeat: no-repeat;
+  background-image: inherit;
+  animation: zoomIn 20s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 3;
+  color: white;
+}
+
 /*******************************
 *            PAGE 404          *
 *******************************/
@@ -425,4 +456,59 @@ footer {
 .footer img {
   width: auto;
   height: auto;
+}
+
+/*******************************
+*          PRELOADER         *
+*******************************/
+
+.preloader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(32, 30, 30);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.preloder-box {
+  position: relative;
+  width: 150px;
+  height: 150px;
+
+  /* Use flexbox to center children */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preloader-spinner {
+  position: absolute;
+  width: 200px;   /* slightly bigger than image */
+  height: 200px;
+  border: 8px solid #ccc;
+  border-top: 8px solid var(--interactive-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+
+  /* Center with absolute positioning */
+  top: -16%;
+  left: -17%;
+  transform: translate(-50%, -50%);
+}
+
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }

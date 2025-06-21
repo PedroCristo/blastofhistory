@@ -10,6 +10,7 @@ import App from "./App.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import Preloader from "./components/extra/Preloader.jsx";
+import CookieConsent from "./components/extra/CookiesConcent.jsx";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -31,6 +32,7 @@ function Root() {
     <>
       <Navbar />
       {showPreloader ? <Preloader /> : <App />}
+      <CookieConsent />
       <Footer />
     </>
   );

@@ -151,7 +151,7 @@ function VideosPage() {
           {filteredVideos.map((video) => (
             <div
               key={video.id}
-              className="col-lg-3 col-md-6 col-sm-12 mt-2 mb-5 d-flex justify-content-center"
+              className="col-lg-3 col-md-6 col-sm-12 mt-2 mb-5 d-flex justify-content-center" data-aos="fade-up"
             >
               <VideoCard
                 id={video.id}

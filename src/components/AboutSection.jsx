@@ -3,12 +3,12 @@ function AboutSection() {
     <div className="container my-5 about section">
       <div className="row align-items-center">
         {/* Text Section */}
-        <div className="col-md-8">
+        <div className="col-md-8" data-aos="fade-up">
           <h2 className="interactive-color mb-3 title">
-            About Blast of History
+            About
           </h2>
           <h4 className="text-mute mb-4 subtile">Uncovering the Untold</h4>
-          <p>
+          <p className="paragraph">
             <strong>
               Blast of History is more than just a history channel — it’s a time
               machine.
@@ -20,7 +20,7 @@ function AboutSection() {
             detail.
           </p>
 
-          <p>
+          <p className="paragraph">
             <strong>
               The idea behind the channel is simple: make history thrilling
               again.
@@ -32,7 +32,7 @@ function AboutSection() {
             episode into a short film that leaves you wanting more.
           </p>
 
-          <p>
+          <p className="paragraph">
             <strong>
               Every story we tell is rooted in fact — but delivered with flair.
             </strong>{" "}
@@ -43,7 +43,7 @@ function AboutSection() {
             emotions, and consequences behind them.
           </p>
 
-          <p>
+          <p className="paragraph">
             <strong>
               Our audience isn’t just watching — they’re part of the mystery.
             </strong>{" "}
@@ -53,7 +53,7 @@ function AboutSection() {
             community built around curiosity and discussion.
           </p>
 
-          <p className="mb-5">
+          <p className=" paragraph mb-5">
             <strong>Blast of History is constantly evolving.</strong> From
             YouTube Shorts to full-length episodes, we are expanding our formats
             and platforms — including TikTok, Instagram, and beyond. Our mission
@@ -66,7 +66,7 @@ function AboutSection() {
 
         {/* Image Section */}
         <div
-          className="col-md-4 d-flex justify-content-center align-items-center mt-5"
+          className="col-md-4 d-flex justify-content-center align-items-center mt-5" data-aos="fade-left"
           style={{ minHeight: "100vh" }}
         >
           <img

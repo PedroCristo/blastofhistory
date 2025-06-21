@@ -4,7 +4,7 @@ function HeroSection() {
   return (
     <div>
       <div id="heroSection" className="container-100 set-bg">
-        <div className="container">
+        <div className="container" data-aos="fade-up">
           <div className="row">
             <div className="col-md-12 col-sm-12">
               <h1 className="mb-3 title">Blast Of History Channel</h1>

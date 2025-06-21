@@ -5,7 +5,7 @@ function ContactSection() {
     <section className="container my-5">
       <div className="row contact-form">
         {/* Contact Form */}
-        <div className="col-md-6 mb-4">
+        <div className="col-md-6 mb-4" data-aos="fade-up">
           <h3 className="mb-4 title interactive-color">Get in Touch</h3>
           <form>
             <div className="mb-3">
@@ -29,7 +29,7 @@ function ContactSection() {
         </div>
 
         {/* Contact Info & Socials */}
-        <div className="col-md-6 d-flex flex-column justify-content-center align-items-center col-details">
+        <div className="col-md-6 d-flex flex-column justify-content-center align-items-center col-details" data-aos="fade-left">
           <h3 className="mb-4 interactive-color sub-title">Contact</h3>
           <p className="d-flex align-items-center gap-2">
             <i className="bi bi-geo-alt interactive-color"></i>

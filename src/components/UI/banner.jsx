@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 function Banner({ title, image1, alt1, text1, image2, alt2, text2 }) {
   return (
     <div>
-      <div className="container-fluid banner">
+      <div className="container-fluid banner" data-aos="fade-up">
         <div id="banner" className="container banner text-center">
          <h2 className="title box-shadow w-75 pt-2 pb-2 mrgin-0 text-center">{title}</h2>
           <div className="row">

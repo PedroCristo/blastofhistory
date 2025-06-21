@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../data/firebaseConfig";
 import VideoCard from "./VideoCard";
+import PropTypes from "prop-types";
 
 function VideoCardList({ showFeaturedOnly = false }) {
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Helper function to clean strings of extra quotes
   const cleanString = (str) => {
     if (typeof str === "string") {
       return str.replace(/^"(.*)"$/, "$1").trim();
@@ -58,31 +58,38 @@ function VideoCardList({ showFeaturedOnly = false }) {
 
   return (
     <div className="container-fluid">
-    <div className="row card-list d-flex flex-wrap justify-content-center">
-      {filteredVideos.map((video) => {
-        const cleanUrl = video.cover ? video.cover.trim() : "";
-        return (
-          <div
-            key={video.id}
-            className="col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center"
-          >
-            <VideoCard
-              id={video.id}
-              cover={cleanUrl}
-              category={video.category}
-              year={video.year}
-              title={video.title}
-              videoId={video.videoId}
-              type="shorts"
-              mode="modal"
-            />
-          </div>
-        );
-      })}
-    </div>
-
+      <div className="row card-list d-flex flex-wrap justify-content-center">
+        {filteredVideos.map((video) => {
+          const cleanUrl = video.cover ? video.cover.trim() : "";
+          return (
+            <div
+              key={video.id}
+              className="col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center"  data-aos="fade-up"
+            >
+              <VideoCard
+                id={video.id}
+                cover={cleanUrl}
+                category={video.category}
+                year={video.year}
+                title={video.title}
+                videoId={video.videoId}
+                type="shorts"
+                mode="modal"
+              />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
+
+VideoCardList.propTypes = {
+  showFeaturedOnly: PropTypes.bool,
+};
+
+VideoCardList.defaultProps = {
+  showFeaturedOnly: false,
+};
 
 export default VideoCardList;

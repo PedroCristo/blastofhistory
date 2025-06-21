@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ReactPlayer from "react-player";
+import PropTypes from "prop-types";
 
 function VideoCard({
   id,
@@ -137,5 +138,26 @@ function VideoCard({
     </>
   );
 }
+
+VideoCard.propTypes = {
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  type: PropTypes.string.isRequired,
+  cover: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  year: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  title: PropTypes.string.isRequired,
+  videoId: PropTypes.string.isRequired,
+  videoDetails: PropTypes.bool,
+  detailsPage: PropTypes.bool,
+  mt: PropTypes.bool,
+  mode: PropTypes.oneOf(["modal", "link"]),
+};
+
+VideoCard.defaultProps = {
+  videoDetails: false,
+  detailsPage: false,
+  mt: false,
+  mode: "modal",
+};
 
 export default VideoCard;

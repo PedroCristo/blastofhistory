@@ -66,15 +66,15 @@ function VideoCardList({ showFeaturedOnly = false }) {
               key={video.id}
               className="col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center"  data-aos="fade-up"
             >
-              <VideoCard
+             <VideoCard
                 id={video.id}
-                cover={cleanUrl}
+                cover={video.cover ? video.cover.trim() : ""}
                 category={video.category}
                 year={video.year}
-                title={video.title}
                 videoId={video.videoId}
+                mode="link"
                 type="shorts"
-                mode="modal"
+                title={video.title}
               />
             </div>
           );

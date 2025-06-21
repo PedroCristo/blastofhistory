@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ReactPlayer from "react-player";
@@ -20,6 +19,18 @@ function VideoCard({
 }) {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
+
+  // Prevent background scroll when modal is open
+  useEffect(() => {
+    if (showModal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [showModal]);
 
   const handleClick = () => {
     if (mode === "modal") {
@@ -42,19 +53,27 @@ function VideoCard({
 
   return (
     <>
-      <div className={cardClasses} onClick={handleClick}>
+      <div
+        className={cardClasses}
+        onClick={handleClick}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") handleClick();
+        }}
+      >
         <img
           src={cover}
           alt={`${title} Video Cover`}
           className={`img-fluid rounded ${
             type === "shorts" ? "w-75" : "w-100"
-          } ${videoDetails === true ? "video-detail-img-big" : ""}`}
+          } ${videoDetails ? "video-detail-img-big" : ""}`}
         />
 
         <button
           className="bt btn-light border-0 position-absolute w-50"
           onClick={(e) => {
-            e.stopPropagation(); // Prevent button click from bubbling to parent
+            e.stopPropagation();
             handleClick();
           }}
           style={{
@@ -64,6 +83,7 @@ function VideoCard({
             fontSize: "2rem",
             opacity: 0.8,
           }}
+          aria-label={`Play video: ${title}`}
         >
           <img
             className="w-50 translate-image"
@@ -98,9 +118,16 @@ function VideoCard({
       {mode === "modal" && showModal && (
         <div
           className="modal fade show"
-          style={{ display: "block", backgroundColor: "rgba(0,0,0,0.8)" }}
-          tabIndex="-1"
+          style={{
+            display: "block",
+            backgroundColor: "rgba(0,0,0,0.8)",
+            zIndex: 1050,
+          }}
+          tabIndex={-1}
           onClick={closeModal}
+          aria-modal="true"
+          role="dialog"
+          aria-labelledby={`modal-title-${id}`}
         >
           <div
             className="modal-dialog modal-lg modal-dialog-centered"
@@ -113,16 +140,14 @@ function VideoCard({
                   type="button"
                   className="btn-close btn-close-white ms-auto"
                   onClick={closeModal}
+                  aria-label="Close modal"
                 />
               </div>
               <div
                 className="modal-body p-0"
                 style={{ height: "calc(100% - 56px)" }}
               >
-                <div
-                  className="ratio mt-5 ratio-16x9"
-                  style={{ height: "90%" }}
-                >
+                <div className="ratio mt-5 ratio-16x9" style={{ height: "90%" }}>
                   <ReactPlayer
                     url={`https://www.youtube.com/embed/${videoId}`}
                     controls

@@ -75,7 +75,7 @@ function ShortsDetailsPage() {
   const paragraphs = video.description?.split("\n\n") || [];
 
   return (
-    <div className="container section shorts-details">
+    <div className="container section shorts-details mt-5">
       <div className="row row-reverse-992px align-items-center">
         {/* Text Section */}
         <div className="col-100 col-md-8">

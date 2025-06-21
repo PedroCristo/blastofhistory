@@ -154,10 +154,16 @@ a:hover {
 *            NAVBAR           *
 *******************************/
 .navbar {
-  background-color: #ffffff !important;
+  background-color: transparent !important;
   position: fixed !important;
   width: 100%;
   z-index: 1000;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 25px;
+  transition: all ease-in .2s;
+}
+.navbar .bi-list {
+  font-size: 3rem !important;
 }
 
 .navbar img {
@@ -168,8 +174,27 @@ a:hover {
   z-index: -1;
 }
 
-.navbar a {
-  color: var(--light-background-color) !important;
+.navbar .nav-item {
+  color: #e6e1e1 !important;
+}
+
+.navbar-action {
+  background-color: #ffffff !important;
+  box-shadow: 1px 10px 10px -1px rgba(1, 1, 1, 0.5);
+  margin-top: 0;
+}
+
+.navlink-action {
+  color: #221e1e !important;
+}
+
+.navbar-toggler:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.navbar-toggler {
+  border: 0 !important;
 }
 
 /*******************************
@@ -314,6 +339,9 @@ div.contact-form {
 /*******************************
 *           SHORTS PAGE        *
 *******************************/
+.Shorts-page  {
+  margin-top: -50px;
+}
 .Shorts-page .btn,
 .Videos-page .btn {
   width: 230px !important;
@@ -331,9 +359,10 @@ div.contact-form {
 .shorts-details {
   margin-top: 00px !important;
 }
+
 .shorts-details .title,
 .video-details .title {
- font-size: 2.5rem;
+  font-size: 2.5rem;
 
 }
 

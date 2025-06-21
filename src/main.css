@@ -459,7 +459,7 @@ footer {
 }
 
 /*******************************
-*          PRELOADER         *
+*          PRELOADER           *
 *******************************/
 
 .preloader-overlay {
@@ -479,7 +479,7 @@ footer {
   position: relative;
   width: 150px;
   height: 150px;
-
+  
   /* Use flexbox to center children */
   display: flex;
   justify-content: center;
@@ -494,7 +494,7 @@ footer {
   border-top: 8px solid var(--interactive-color);
   border-radius: 50%;
   animation: spin 1s linear infinite;
-
+  
   /* Center with absolute positioning */
   top: -16%;
   left: -17%;
@@ -511,4 +511,12 @@ footer {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+/*******************************
+*          PRELOADER           *
+*******************************/
+.privacy-policy {
+  margin-top: 150px;
+  
 }

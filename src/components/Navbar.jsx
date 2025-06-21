@@ -107,6 +107,15 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
+              <Link
+                className={`nav-link ${scrolled ? "navlink-action" : ""}`}
+                to="/privacy-policy"
+                onClick={handleNavLinkClick}
+              >
+                Policy Privacy
+              </Link>
+            </li>
+            <li className="nav-item">
               <a
                 className={`nav-link ${scrolled ? "navlink-action" : ""}`}
                 target="_blank"

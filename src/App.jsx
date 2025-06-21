@@ -11,6 +11,7 @@ import ShortsDetailsPage from "./pages/en/ShortDetailsPage";
 import VideosPage from "./pages/en/VideosPage";
 import VideoDetailsPage from "./pages/en/videoDetailsPage";
 import PageNotFound from "./pages/error/404";
+import PrivacyPolicy from "./pages/en/PrivacyPolicyPage";
 
 function App() {
   useEffect(() => {
@@ -41,6 +42,7 @@ function App() {
         <Route path="/short/:id" element={<ShortsDetailsPage />} />
         <Route path="/videos-page" exact element={<VideosPage />} />
         <Route path="/video/:id" element={<VideoDetailsPage type="video" />} />´
+        <Route path="privacy-policy" element={<PrivacyPolicy/>} />´
         <Route path="*" exact element={<PageNotFound />} />
       </Routes>
     </>

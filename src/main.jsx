@@ -32,7 +32,7 @@ function Root() {
     <>
       <Navbar />
       {showPreloader ? <Preloader /> : <App />}
-      <CookieConsent />
+      {/* <CookieConsent /> */}
       <Footer />
     </>
   );

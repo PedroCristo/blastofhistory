@@ -9,7 +9,7 @@ function Banner({ title, image1, alt1, text1, image2, alt2, text2 }) {
           <div className="row">
             <div className="col-md-6 d-flex justify-content-center flex-column align-items-center">
               <img className="box-shadow w-50" src={image1} alt={alt1} />
-              <span className="w-75 paragraph">{text1}</span>
+              <span className="w-75 mb-5 paragraph">{text1}</span>
             </div>
             <div className="col-md-6 d-flex justify-content-center flex-column align-items-center">
               <img className="box-shadow w-50" src={image2} alt={alt2} />

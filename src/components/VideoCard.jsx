@@ -103,7 +103,7 @@ function VideoCard({
         >
           <div
             className="modal-dialog modal-lg modal-dialog-centered"
-            style={{ maxWidth: "90vw", maxHeight: "80vh" }}
+            style={{ maxWidth: "98vw", maxHeight: "80vh" }}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="modal-content bg-dark" style={{ height: "90vh" }}>

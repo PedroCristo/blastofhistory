@@ -122,7 +122,7 @@ function ShortsPage() {
         <div className="zoom-bg-layer" />
         <div className="overlay" />
         <div className="content">
-          <h1 className="mb-4 interactive-color title">{pageTitle}</h1>
+          <h1 className="mb-4 mt-5 interactive-color title">{pageTitle}</h1>
         </div>
       </section>
 

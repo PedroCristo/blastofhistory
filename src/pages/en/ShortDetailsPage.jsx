@@ -55,7 +55,10 @@ function ShortsDetailsPage() {
     async function fetchAllVideos() {
       try {
         const querySnapshot = await getDocs(collection(db, "shorts"));
-        const allVideos = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        const allVideos = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
         console.log("All videos in collection:", allVideos);
       } catch (err) {
         console.error("Error fetching all videos:", err);
@@ -78,28 +81,29 @@ function ShortsDetailsPage() {
         <div className="col-100 col-md-8">
           <h2 className="interactive-color mb-3 title">{video.title}</h2>
           <h4 className="mb-4 subtitle">{video.subTitle}</h4>
-          <h5 className="text-secondary mb-4">
-            <span className="me-3">
+          {/* Info Grid */}
+          <div className="d-flex flex-wrap gap-2 mb-4">
+            <div className="d-flex align-items-center me-3">
               <i className="bi bi-tags me-1 interactive-color"></i>
-              {video.category}
-            </span>
-            <span className="me-3">
-              <i className="bi bi-calendar-event me-1 interactive-color"></i>
-              <span className="me-2">{video.year}</span>
-            </span>
-            <span className="me-3">
+              <span>{video.category}</span>
+            </div>
+            <div className="d-flex align-items-center me-3">
               <i
                 className={`bi me-1 interactive-color ${
-                  video.type?.toLowerCase() === "shorts" ? "bi-phone" : "bi-tv"
+                  video.type === "Shorts" ? "bi-phone" : "bi-tv"
                 }`}
               ></i>
-              {video.type}
-            </span>
-            <span>
-              <i className="bi bi-camera-reels interactive-color me-1"></i>
-              {video.edition}
-            </span>
-          </h5>
+              <span>{video.type}</span>
+            </div>
+            <div className="d-flex align-items-center me-3">
+              <i className="bi bi-calendar-event me-1 interactive-color"></i>
+              <span>{video.year}</span>
+            </div>
+            <div className="d-flex align-items-center">
+              <i className="bi bi-camera-reels me-1 interactive-color"></i>
+              <span>{video.edition}</span>
+            </div>
+          </div>
           {paragraphs.map((p, i) => (
             <p key={i} style={{ marginBottom: "0.75rem" }}>
               {p}

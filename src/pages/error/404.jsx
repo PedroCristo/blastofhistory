@@ -10,7 +10,7 @@ const PageNotFound = () => {
         </div>
       </div>
 
-      <div className="btn-box w-25">
+      <div className="btn-box">
         <Link to="/" className="btn w-100" aria-label="Go back to the home page">
           <i className="bi bi-arrow-left me-2"></i> Go Back
         </Link>

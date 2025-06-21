@@ -7,7 +7,7 @@ function Footer() {
           <div className="row">
             <div className="col-md-4">
               <h3 className="mb-5 interactive-color">
-                Blast Of History Channel
+                Blast Of History <br />Channel
               </h3>
               <img
                 src="images/small/blast-of-history-300x300.jpg"
@@ -18,7 +18,7 @@ function Footer() {
                 
               />
             </div>
-            <div className="col-md-4">
+            <div className="col-md-5">
               <h3 className="mb-5 interactive-color">Contact</h3>
               <p style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                 <i className="bi bi-geo-alt interactive-color"></i>
@@ -29,7 +29,7 @@ function Footer() {
                 media.info.creations@gmail.com
               </p>
             </div>
-            <div className="col-md-4">
+            <div className="col-md-3">
               <h3 className="mb-5 interactive-color">Follow Us</h3>
               <a
                 href="https://www.youtube.com/@blastofhistory"

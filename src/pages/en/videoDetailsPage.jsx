@@ -46,43 +46,34 @@ function VideoDetailsPage() {
         <div className="col-md-7 col-100">
           <h2 className="interactive-color mb-3 title">{video.title}</h2>
           <h4 className="mb-4 subtitle">{video.subTitle}</h4>
-
           {/* Info Grid */}
-          <div className="row text-start mb-4">
-            <div className="col-6 col-md-auto mb-2">
-              <span className="me-3">
-                <i className="bi bi-tags me-1 interactive-color"></i>
-                {video.category}
-              </span>
+          <div className="d-flex flex-wrap gap-2 mb-4">
+            <div className="d-flex align-items-center me-3">
+              <i className="bi bi-tags me-1 interactive-color"></i>
+              <span>{video.category}</span>
             </div>
-            <div className="col-6 col-md-auto mb-2">
-              <span className="me-3">
-                <i
-                  className={`bi me-1 interactive-color ${
-                    video.type === "shorts" ? "bi-phone" : "bi-tv"
-                  }`}
-                ></i>
-                {video.type}
-              </span>
+            <div className="d-flex align-items-center me-3">
+              <i
+                className={`bi me-1 interactive-color ${
+                  video.type === "Shorts" ? "bi-phone" : "bi-tv"
+                }`}
+              ></i>
+              <span>{video.type}</span>
             </div>
-            <div className="col-6 col-md-auto mb-2">
-              <span className="me-3">
-                <i className="bi bi-calendar-event me-1 interactive-color"></i>
-                <span className="me-2">{video.year}</span>
-              </span>
+            <div className="d-flex align-items-center me-3">
+              <i className="bi bi-calendar-event me-1 interactive-color"></i>
+              <span>{video.year}</span>
             </div>
-            <div className="col-6 col-md-auto mb-2">
-              <span>
-                <i className="bi bi-camera-reels interactive-color me-1"></i>
-                {video.edition}
-              </span>
+            <div className="d-flex align-items-center">
+              <i className="bi bi-camera-reels me-1 interactive-color"></i>
+              <span>{video.edition}</span>
             </div>
           </div>
-
           {paragraphs.map((p, i) => (
-            <p className="paragraph" key={i}>{p}</p>
+            <p className="paragraph" key={i}>
+              {p}
+            </p>
           ))}
-
           {video.additionalInfo && (
             <span className="text-secondary sub-title box-shadow p-4 mt-4 d-inline-block">
               {video.additionalInfo}

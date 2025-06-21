@@ -106,7 +106,25 @@
         margin: 25px 3px -5px;
     }
 
+    /* Page 404 */
+
+    .page-404 .content-box h1.title {
+        font-size: 8rem;
+    }
+
+    .page-404 .content-box h2.title {
+        font-size: 3rem !important;
+    }
+
+    .page-404 .btn {
+        width: 100% !important;
+    }
+
     /* Footer */
+    .footer {
+        padding: 15px;
+    }
+
     .footer h3 {
         margin-bottom: 15px !important;
         margin-top: 25px !important;
@@ -129,6 +147,11 @@
 
 @media only screen and (max-width: 500px) {
 
+    /* Genneral Style */
+    .title {
+        font-size: 2.5rem;
+    }
+
     /* Shorts and Video page */
     .zoom-background {
         height: 30vh !important;
@@ -137,7 +160,11 @@
 
     .Shorts-page .title,
     .Videos-page .title {
-        font-size: 2.5rem;
+        font-size: 2rem;
+    }
+
+    .shorts-details {
+        padding: 35px 5px !important;
     }
 
     /* Video Deatail */

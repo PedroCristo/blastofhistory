@@ -15,6 +15,7 @@ function VideoCard({
   videoDetails,
   detailsPage,
   mt = false,
+  shorts = false,
   mode = "modal", // "modal" or "link"
 }) {
   const [showModal, setShowModal] = useState(false);
@@ -66,8 +67,10 @@ function VideoCard({
           src={cover}
           alt={`${title} Video Cover`}
           className={`img-fluid rounded ${
-            type === "shorts" ? "w-75 shorts-img" : "w-100"
-          } ${videoDetails ? "video-detail-img-big" : ""}`}
+            type === "shorts" ? "w-75" : "w-100"
+          } ${shorts ? "shorts-img" : ""} ${
+            videoDetails ? "video-detail-img-big" : ""
+          }`}
         />
 
         <button
@@ -147,7 +150,10 @@ function VideoCard({
                 className="modal-body p-0"
                 style={{ height: "calc(100% - 56px)" }}
               >
-                <div className="ratio mt-5 ratio-16x9" style={{ height: "90%" }}>
+                <div
+                  className="ratio mt-5 ratio-16x9"
+                  style={{ height: "90%" }}
+                >
                   <ReactPlayer
                     url={`https://www.youtube.com/embed/${videoId}`}
                     controls

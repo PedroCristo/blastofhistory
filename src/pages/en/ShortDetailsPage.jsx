@@ -131,6 +131,7 @@ function ShortsDetailsPage() {
             mode="modal"
             type="shorts"
             mt={true}
+            shorts={true}
             detailsPage={true}
           />
         </div>

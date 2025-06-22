@@ -226,7 +226,7 @@ a:hover {
   margin-top: -150px;
   transition: all 3s ease-in-out !important;
   cursor: pointer;
-  z-index: -1;
+  z-index: 2;
 }
 
 .video-card::before {

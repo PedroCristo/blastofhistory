@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const PrivacyPolicy = () => {
   return (
@@ -124,9 +125,9 @@ const PrivacyPolicy = () => {
         For questions or concerns regarding this Privacy, Cookies, or Terms of
         Use policy, please contact:
         <br />
-        <a href="media.info.creations@gmail.com" className="interactive-color">
+        <Link to="/contact-page" className="interactive-color">
           media.info.creations@gmail.com
-        </a>
+        </Link>
       </p>
     </div>
   );

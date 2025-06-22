@@ -36,7 +36,6 @@ function VideoCardList({ showFeaturedOnly = false }) {
             year: data.year,
           };
         });
-        console.log("Videos fetched from Firestore:", videoData);
         setVideos(videoData);
       } catch (err) {
         setError(err);

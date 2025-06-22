@@ -40,8 +40,6 @@ function VideosPage() {
           id: doc.id,
           ...doc.data(),
         }));
-        console.log("Fetched videos:", videoData); // <-- ADD THIS
-
         setVideos(videoData);
       } catch (err) {
         setError(err);

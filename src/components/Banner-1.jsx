@@ -5,7 +5,7 @@ function Banner1() {
     <div>
       <Banner
         title="Blast Of History Series"
-        image1="/images/small/vertical/blast_of_history.webp"
+        image1="/images/small/vertical/blast_of_history.png"
         alt1="Blast of History"
         text1="Blast of History brings true historical stories to life with drama, facts, and stunning visuals."
         image2="/images/small/vertical/sky-legendas-logo.jpg"

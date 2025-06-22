@@ -5,7 +5,7 @@ function AboutSection() {
         {/* Text Section */}
         <div className="col-md-8" data-aos="fade-up">
           <h2 className="interactive-color mb-3 title">
-            About
+            About Us
           </h2>
           <h4 className="text-mute mb-4 subtile">Uncovering the Untold</h4>
           <p className="paragraph">
@@ -61,7 +61,7 @@ function AboutSection() {
             generation of thinkers, dreamers, and storytellers.
           </p>
 
-          <span className="interactive-color sub-title box-shadow p-3">Blast of History Team</span>
+          <div className="interactive-color sub-title box-shadow p-3 w-75 text-center">Blast of History Team</div>
         </div>
 
         {/* Image Section */}
@@ -70,7 +70,7 @@ function AboutSection() {
           style={{ minHeight: "100vh" }}
         >
           <img
-            src="/images/small/vertical/blast_of_history.webp"
+            src="/images/small/vertical/blast_of_history.png"
             alt="Blast of History visual"
             className="img-fluid rounded box-shadow"
           />

@@ -32,7 +32,6 @@ function ShortsDetailsPage() {
 
         if (docSnap.exists()) {
           const videoData = { id: docSnap.id, ...docSnap.data() };
-          console.log("Fetched video:", videoData);
           setVideo(videoData);
           setError(null);
         } else {
@@ -59,7 +58,6 @@ function ShortsDetailsPage() {
           id: doc.id,
           ...doc.data(),
         }));
-        console.log("All videos in collection:", allVideos);
       } catch (err) {
         console.error("Error fetching all videos:", err);
       }

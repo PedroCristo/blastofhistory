@@ -205,6 +205,10 @@ a:hover {
 #heroSection {
   background-image: radial-gradient(circle at bottom, rgba(255, 255, 255, 0.5), transparent 40%), url(images/large/hero-section-1.png);
 }
+#heroSection .container{
+  z-index: 1000;
+
+}
 
 .hero-wrapper {
   position: relative;

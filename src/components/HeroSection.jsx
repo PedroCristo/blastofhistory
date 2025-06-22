@@ -1,6 +1,6 @@
 import SubscribeButton from "./extra/BtnSubcribeChanel";
 
-import heroVideo from "/public/videos/video.mp4"; // Adjust path as needed
+import heroVideo from "/videos/video.mp4"; // Adjust path as needed
 
 function HeroSection() {
   return (

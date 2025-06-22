@@ -1,9 +1,20 @@
 import SubscribeButton from "./extra/BtnSubcribeChanel";
 
+import heroVideo from "/public/videos/video.mp4"; // Adjust path as needed
+
 function HeroSection() {
   return (
     <div>
-      <div id="heroSection" className="container-100 set-bg">
+      <div id="heroSection" className="container-100 set-b">
+        <video
+          className="hero-video w-100"
+          src={heroVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+        ></video>
+        <div className="video-overlay"></div>
         <div className="container" data-aos="fade-up">
           <div className="row">
             <div className="col-md-12 col-sm-12">

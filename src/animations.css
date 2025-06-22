@@ -1,4 +1,23 @@
 /* Imagem Zoom */
+.zoom-bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  animation: zoomIn 20s ease-in-out infinite alternate;
+  z-index: 1;
+
+  transform-origin: center center;
+  will-change: transform;
+}
+
+/* Zoom animation */
 @keyframes zoomIn {
   0% {
     transform: scale(1);
@@ -19,29 +38,7 @@
   }
 }
 
-/* Cookies Concent */
-.cookie-banner {
-  visibility: hidden;
-  opacity: 0;
-  transform: translateY(100%);
-  transition: all  2s ease-in-out;
-}
-
-.cookie-banner.show {
-  visibility: visible;
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 2s;
-}
-
-.cookie-banner {
-  animation: slideUp 3s ease-in-out;
-  animation-delay: 5s; /* Delay animation start by 5 seconds */
-  animation-fill-mode: forwards; /* Keeps the final state after animation */
-  display: none !important;
-}
-
-
+/* Cookies Box */
 @keyframes slideUp {
   from {
     transform: translateY(100%);
@@ -50,3 +47,4 @@
     transform: translateY(0%);
   }
 }
+

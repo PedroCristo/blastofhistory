@@ -40,8 +40,8 @@ function VideoDetailsPage() {
   const paragraphs = video.description ? video.description.split("\n\n") : [];
 
   return (
-    <div className="container section shorts-details video-container">
-      <div className="row row-reverse-992px align-items-center">
+    <div className="container section shorts-details video-container mt-5">
+      <div className="row row-reverse-992px align-items-center mt-2">
         {/* Text Section */}
         <div className="col-md-7 col-100">
           <h2 className="interactive-color mb-3 title">{video.title}</h2>

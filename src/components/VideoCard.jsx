@@ -66,7 +66,7 @@ function VideoCard({
           src={cover}
           alt={`${title} Video Cover`}
           className={`img-fluid rounded ${
-            type === "shorts" ? "w-75" : "w-100"
+            type === "shorts" ? "w-75 shorts-img" : "w-100"
           } ${videoDetails ? "video-detail-img-big" : ""}`}
         />
 

@@ -226,6 +226,7 @@ a:hover {
   margin-top: -150px;
   transition: all 3s ease-in-out !important;
   cursor: pointer;
+  z-index: -1;
 }
 
 .video-card::before {
@@ -259,14 +260,10 @@ a:hover {
   right: 5px;
   color: white;
   font-size: 15px;
-  /* you wrote resize: 15px, probably font-size */
-  /* background: rgba(0, 0, 0, 0.5); */
-  /* translucent background for readability */
   padding: 5px 0;
   border-radius: 5px;
-  /* optional text shadow for better readability */
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
-  z-index: 1000;
+  z-index: 20;
 }
 
 .video-details span {
@@ -295,6 +292,10 @@ a:hover {
   font-size: 1.2rem;
   font-weight: bold;
   letter-spacing: 0.9px;
+}
+
+.shorts-img {
+  margin-top: -80px !important;
 }
 
 /*******************************
@@ -514,9 +515,13 @@ footer {
 }
 
 /*******************************
-*          PRELOADER           *
+*   PRIVACY POLICY PAGE        *
 *******************************/
 .privacy-policy {
   margin-top: 150px;
   
+}
+
+.cookie-banner {
+  z-index: 1000 !important;
 }

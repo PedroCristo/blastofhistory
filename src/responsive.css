@@ -35,6 +35,9 @@
   }
 
   /* Shorts Video Details */
+  .shorts-details .row{
+    margin-top: 100px !important;
+  }
   .shorts-details {
     margin-top: 100px !important;
   }
@@ -133,6 +136,12 @@
   .video-detail-img-big {
     transform: scale(1.2);
   }
+
+  /* Shorts Details */
+
+  .shorts-details {
+    margin-top: 50px !important;
+  }
 }
 
 @media only screen and (max-width: 500px) {
@@ -153,7 +162,11 @@
   }
 
   .shorts-details {
-    padding: 35px 5px !important;
+    padding: 35px 10px !important;
+  }
+
+  .shorts-details .row{
+    margin-top: 70px !important;
   }
 
   /* Video Detail */

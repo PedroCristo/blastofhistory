@@ -114,8 +114,7 @@ function ContactSection() {
 
             <div className="mb-3">
               <ReCAPTCHA
-                // sitekey="6Lc6kmkrAAAAAGbmfXrjoMLp2WUG7egEmqTkKLW7"
-                sitekey="6LeAuGkrAAAAAE05vIiAYoxIyRw_76r4rVOjC_vQ"
+                sitekey="6Lc6kmkrAAAAAGbmfXrjoMLp2WUG7egEmqTkKLW7"
                 onChange={handleRecaptchaChange}
                 hl="en"
               />

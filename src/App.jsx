@@ -13,7 +13,7 @@ import VideosPage from "./pages/en/VideosPage";
 import VideoDetailsPage from "./pages/en/videoDetailsPage";
 import PageNotFound from "./pages/error/404";
 import PrivacyPolicy from "./pages/en/PrivacyPolicyPage";
-import PrivateRoute from "./components/login/PrivateRouts";
+import PrivateRoute from "../src/components/Login/PrivateRouts";
 import Login from "./pages/login/Login";
 import ResetPassword from "./pages/login/ResetPassword";
 

@@ -18,7 +18,7 @@ function HeroSection() {
         <div className="container" data-aos="fade-up">
           <div className="row">
             <div className="col-md-12 col-sm-12">
-              <h1 className="mb-3 title">Blast Of History Channel Test</h1>
+              <h1 className="mb-3 title">Blast Of History Channel</h1>
               <h3 className="mb-3 w-50">
                 Your gateway to thrilling historical stories and true events.
               </h3>

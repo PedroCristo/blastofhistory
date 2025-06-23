@@ -52,22 +52,15 @@ function App() {
         <Route path="/about-page" exact element={<AboutPage />} />
         <Route path="/shorts-page" exact element={<ShortsPage />} />
         <Route path="/short/:id" element={<ShortsDetailsPage />} />
+        <Route path="/videos-page" exact element={<VideosPage />} />
+        <Route path="/video/:id" element={<VideoDetailsPage />} />
         <Route path="privacy-policy" element={<PrivacyPolicy />} />
         <Route path="*" exact element={<PageNotFound />} />
         {/* Protected Routes */}
         <Route
-          path="/videos-page"
+          path=""
           element={
             <PrivateRoute>
-              <VideosPage />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/video/:id"
-          element={
-            <PrivateRoute>
-              <VideoDetailsPage type="video" />
             </PrivateRoute>
           }
         />

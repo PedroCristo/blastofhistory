@@ -1,5 +1,5 @@
 import SubscribeButton from "./extra/BtnSubcribeChanel";
-
+import { Link } from "react-router-dom";
 import heroVideo from "/videos/video.mp4"; // Adjust path as needed
 
 function HeroSection() {
@@ -29,9 +29,9 @@ function HeroSection() {
             </div>
             <div className="row gap-3">
               <div className="col-md-6 col-lg-4 col-sm-12 d-flex justify-content-center">
-                <a type="button" className="btn">
+                <Link to="./about-page" type="button" className="btn">
                   Discover More
-                </a>
+                </Link>
               </div>
               <div className="col-md-6 col-lg-4 col-sm-12 d-flex justify-content-center">
                 <SubscribeButton />

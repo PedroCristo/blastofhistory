@@ -49,7 +49,7 @@ function VideoCard({
     "position-relative",
     "text-center",
     mt ? "mt-5" : "",
-    type === "video" ? "expanded" : "",
+    type === "Video" ? "expanded" : "",
   ].join(" ");
 
   return (

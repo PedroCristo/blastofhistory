@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { auth } from "../data/firebaseConfig";
+import { signOut } from "firebase/auth";
+// import useAuth from "../Login/hooks/useAuth"; // Adjust path to your useAuth hook
+import { toast } from "react-toastify";
+
+import useAuth from "./Login/UseAuth";
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const user = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -11,18 +19,27 @@ function Navbar() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Set initial state
+    handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, [location]);
 
-  // Function to close the mobile navbar after clicking a nav link
   const handleNavLinkClick = () => {
     const navbarToggler = document.querySelector(".navbar-toggler");
     const navbarCollapse = document.getElementById("navbarNav");
 
     if (navbarToggler && navbarCollapse.classList.contains("show")) {
-      navbarToggler.click(); // Simulate toggle click
+      navbarToggler.click();
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      toast.info("Logged out successfully", { autoClose: 2000 }); // Show toast for 2 seconds
+      // No navigate here — user stays on the current page
+    } catch (error) {
+      toast.error("Logout failed");
     }
   };
 
@@ -126,6 +143,46 @@ function Navbar() {
                 YouTube 🎬
               </a>
             </li>
+
+            {user ? (
+              <>
+                <li className="nav-item">
+                  <span
+                    className={`nav-link interactive-color${
+                      scrolled ? "navlink-action" : ""
+                    }`}
+                    style={{ cursor: "default" }}
+                  >
+                    Hello, {user.email.split("@")[0]}
+                  </span>
+                </li>
+                <li className="nav-item">
+                  <button
+                    className={`nav-link mt-2 ${
+                      scrolled ? "navlink-action" : ""
+                    }`}
+                    onClick={handleLogout}
+                    style={{
+                      textDecoration: "none",
+                      color: "inherit",
+                      padding: 0,
+                    }}
+                  >
+                    Logout
+                  </button>
+                </li>
+              </>
+            ) : (
+              <li className="nav-item">
+                <Link
+                  className={`nav-link ${scrolled ? "navlink-action" : ""}`}
+                  to="/login"
+                  onClick={handleNavLinkClick}
+                >
+                  Login
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>

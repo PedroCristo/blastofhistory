@@ -30,6 +30,10 @@ body {
   overflow-x: hidden;
 }
 
+.container {
+  overflow: hidden;
+}
+
 .bebas-neue-regular {
   font-family: "Bebas Neue", sans-serif;
   font-weight: 900;
@@ -204,10 +208,11 @@ a:hover {
 
 #heroSection {
   background-image: radial-gradient(circle at bottom, rgba(255, 255, 255, 0.5), transparent 40%), url(images/large/hero-section-1.png);
+  overflow: hidden !important;
 }
+
 #heroSection .container{
   z-index: 10;
-
 }
 
 .hero-wrapper {
@@ -366,7 +371,7 @@ a:hover {
 }
 
 div.contact-form {
-  margin-top: 200px !important;
+  margin-top: 100px !important;
 }
 
 /*******************************

@@ -61,7 +61,7 @@ function AboutSection() {
             generation of thinkers, dreamers, and storytellers.
           </p>
 
-          <div className="interactive-color sub-title box-shadow p-3 w-75 text-center">Blast of History Team</div>
+          <div className="interactive-color sub-title box-shadow p-3 w-100 text-center">Blast of History Team</div>
         </div>
 
         {/* Image Section */}

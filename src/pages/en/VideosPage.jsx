@@ -145,7 +145,7 @@ function VideosPage() {
       {filteredVideos.length === 0 ? (
         <p className="text-center mt-5">No videos found in this category.</p>
       ) : (
-        <div className="row section">
+        <div className="row section w-100">
           {filteredVideos.map((video) => (
             <div
               key={video.id}

@@ -142,7 +142,7 @@ function ShortsPage() {
         ))}
       </div>
 
-      <div className="row section">
+      <div className="row section w-100">
         {filteredVideos.length === 0 ? (
           <p className="text-center mt-5">No videos found in this category.</p>
         ) : (

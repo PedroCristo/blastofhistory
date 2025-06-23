@@ -61,8 +61,7 @@ function ContactSection() {
       <div className="row contact-form">
         {/* Contact Form */}
         <div className="col-md-6 mb-4" data-aos="fade-up">
-          <h3 className="mb-4 title interactive-color">Get in Touch</h3>
-
+          <h3 className="mb-4 mt-5 title interactive-color">Get in Touch</h3>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label htmlFor="name" className="form-label">Name</label>

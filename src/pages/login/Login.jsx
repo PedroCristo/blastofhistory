@@ -148,7 +148,7 @@ function Login() {
         {error && <p style={{ color: "red" }}>{error}</p>}
 
         <button
-          className="interactive-color"
+          className="interactive-color btn"
           onClick={handleEmailLogin}
           style={{ width: "100%", padding: 10 }}
         >

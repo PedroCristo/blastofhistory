@@ -68,7 +68,7 @@ function ResetPassword() {
         {error && <p style={{ color: "red", marginBottom: 8 }}>{error}</p>}
 
         <button
-          className="interactive-color"
+          className="interactive-color btn"
           onClick={handleReset}
           style={{
             width: "100%",

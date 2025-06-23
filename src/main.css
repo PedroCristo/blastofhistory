@@ -34,6 +34,14 @@ body {
   /* overflow: hidden; */
 }
 
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: inherit !important;
+}
+
 .bebas-neue-regular {
   font-family: "Bebas Neue", sans-serif;
   font-weight: 900;
@@ -154,6 +162,11 @@ a:hover {
   text-shadow: 2px 2px 4px black;
 }
 
+.Toastify__toast-theme--light {
+  background: var(--light-background-color) !important;
+  color: var(--text-color-white) !important;
+}
+
 /*******************************
 *            NAVBAR           *
 *******************************/
@@ -211,7 +224,7 @@ a:hover {
   overflow: hidden !important;
 }
 
-#heroSection .container{
+#heroSection .container {
   z-index: 10;
 }
 
@@ -367,9 +380,6 @@ a:hover {
 *******************************/
 .contact-form {
   color: var(--text-color-white);
-}
-
-div.contact-form {
   margin-top: 100px !important;
 }
 

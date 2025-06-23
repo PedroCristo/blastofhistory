@@ -16,6 +16,7 @@ import PrivacyPolicy from "./pages/en/PrivacyPolicyPage";
 import PrivateRoute from "./components/login/PrivateRouts";
 import Login from "./pages/login/Login";
 import ResetPassword from "./pages/login/ResetPassword";
+
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

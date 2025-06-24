@@ -163,7 +163,7 @@ function Navbar() {
                   to="/admin"
                   onClick={handleNavLinkClick}
                 >
-                  User Panel
+                  Admin Panel
                 </Link>
               </li>
             )}

@@ -142,30 +142,35 @@ function ShortsPage() {
         ))}
       </div>
 
-      <div className="row section w-100">
-        {filteredVideos.length === 0 ? (
-          <p className="text-center mt-5">No videos found in this category.</p>
-        ) : (
-          filteredVideos.map((video) => (
-            <div
-              key={video.id}
-              className="col-lg-3 col-md-6 col-sm-12 mt-5 d-flex justify-content-center" data-aos="fade-up"
-            >
-              <VideoCard
-                id={video.id}
-                cover={video.cover ? video.cover.trim() : ""}
-                category={video.category}
-                year={video.year}
-                videoId={video.videoId}
-                mode="link"
-                type="shorts"
-                subTitle={video.subTitle}
-                title={video.title}
-                mt={true}
-              />
-            </div>
-          ))
-        )}
+      <div className="container-fluid">
+        <div className="row section">
+          {filteredVideos.length === 0 ? (
+            <p className="text-center mt-5">
+              No videos found in this category.
+            </p>
+          ) : (
+            filteredVideos.map((video) => (
+              <div
+                key={video.id}
+                className="col-lg-3 col-md-6 col-sm-12 mt-5 d-flex justify-content-center"
+                data-aos="fade-u"
+              >
+                <VideoCard
+                  id={video.id}
+                  cover={video.cover ? video.cover.trim() : ""}
+                  category={video.category}
+                  year={video.year}
+                  videoId={video.videoId}
+                  mode="link"
+                  type="shorts"
+                  subTitle={video.subTitle}
+                  title={video.title}
+                  mt={true}
+                />
+              </div>
+            ))
+          )}
+        </div>
       </div>
     </div>
   );

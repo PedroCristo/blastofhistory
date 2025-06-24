@@ -304,12 +304,25 @@ a:hover {
   transform: translateX(-50%);
 }
 
-.video-card.expanded::before {
-  width: 100% !important;
-}
-
 .video-card:hover::before {
   box-shadow: 10px 8px 16px rgba(245, 244, 244, 0.3);
+}
+
+.video-card-video-details::before {
+  background: rgba(128, 20, 20, 0);
+}
+
+/* .video-card-video-details:hover::before {
+  box-shadow: none !important;
+} */
+
+.video-card-shorts-details::before {
+  top: -80px;
+  height: 119%;
+}
+
+.video-card.expanded::before {
+  width: 100% !important;
 }
 
 .video-details {

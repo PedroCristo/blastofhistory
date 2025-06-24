@@ -13,6 +13,8 @@ function VideoCard({
   title,
   videoId,
   videoDetails,
+  videoCardDetails,
+  shortsDetails,
   detailsPage,
   mt = false,
   shorts = false,
@@ -48,8 +50,11 @@ function VideoCard({
     "video-card",
     "position-relative",
     "text-center",
+    "video-card-video-details",
     mt ? "mt-5" : "",
     type === "Video" ? "expanded" : "",
+    shortsDetails === true ? "video-card-shorts-details" : "",
+    videoCardDetails === true ? "video-card-video-details" : "",
   ].join(" ");
 
   return (

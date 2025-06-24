@@ -95,6 +95,7 @@ function VideoDetailsPage() {
             mode="modal"
             mt={true}
             videoDetails={true}
+            videoCardDetails={true}
             detailsPage={true}
           />
         </div>

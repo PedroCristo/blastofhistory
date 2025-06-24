@@ -145,25 +145,28 @@ function VideosPage() {
       {filteredVideos.length === 0 ? (
         <p className="text-center mt-5">No videos found in this category.</p>
       ) : (
-        <div className="row section w-100">
-          {filteredVideos.map((video) => (
-            <div
-              key={video.id}
-              className="col-lg-3 col-md-6 col-sm-12 mt-2 mb-5 d-flex justify-content-center" data-aos="fade-up"
-            >
-              <VideoCard
-                id={video.id}
-                cover={video.cover}
-                category={video.category}
-                year={video.year}
-                videoId={video.videoId}
-                type={video.type}
-                detailsPage={true}
-                mode="link"
-                mt={true}
-              />
-            </div>
-          ))}
+        <div className="container-fluid">
+          <div className="row section">
+            {filteredVideos.map((video) => (
+              <div
+                key={video.id}
+                className="col-lg-3 col-md-6 col-sm-12 mt-2 mb-5 d-flex justify-content-center"
+                data-aos="fade-up"
+              >
+                <VideoCard
+                  id={video.id}
+                  cover={video.cover}
+                  category={video.category}
+                  year={video.year}
+                  videoId={video.videoId}
+                  type={video.type}
+                  detailsPage={true}
+                  mode="link"
+                  mt={true}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>

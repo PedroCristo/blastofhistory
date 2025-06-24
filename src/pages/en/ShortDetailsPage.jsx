@@ -131,6 +131,8 @@ function ShortsDetailsPage() {
             mt={true}
             shorts={true}
             detailsPage={true}
+            shortsDetails={true}
+            videoCardDetails ={false}
           />
         </div>
       </div>

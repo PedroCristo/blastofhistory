@@ -36,10 +36,12 @@ function ShortsPage() {
       setLoading(true);
       try {
         const querySnapshot = await getDocs(collection(db, "shorts"));
-        const videoData = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
+        const videoData = querySnapshot.docs
+          .map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }))
+          .filter((video) => video.show !== false); // Only include if show is true or undefined
         setVideos(videoData);
       } catch (err) {
         setError(err);

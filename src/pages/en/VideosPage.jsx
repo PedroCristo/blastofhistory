@@ -39,7 +39,8 @@ function VideosPage() {
         const videoData = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
-        }));
+        }))
+        .filter((video) => video.show !== false); 
         setVideos(videoData);
       } catch (err) {
         setError(err);

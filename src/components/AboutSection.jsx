@@ -56,7 +56,7 @@ function AboutSection() {
           <p className=" paragraph mb-5">
             <strong>Blast of History is constantly evolving.</strong> From
             YouTube Shorts to full-length episodes, we are expanding our formats
-            and platforms — including TikTok, Instagram, and beyond. Our mission
+            and platforms — including TikTok, and Facebook. Our mission
             is to make history accessible, exciting, and unforgettable for a new
             generation of thinkers, dreamers, and storytellers.
           </p>

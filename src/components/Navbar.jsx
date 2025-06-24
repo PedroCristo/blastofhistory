@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { auth } from "../data/firebaseConfig";
+import { auth, db } from "../data/firebaseConfig";
 import { signOut } from "firebase/auth";
-// import useAuth from "../Login/hooks/useAuth"; // Adjust path to your useAuth hook
+import { doc, getDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 
 import useAuth from "./Login/UseAuth";
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const user = useAuth();
@@ -17,17 +18,29 @@ function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 0);
     };
-
     window.addEventListener("scroll", handleScroll);
     handleScroll();
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, [location]);
+
+  useEffect(() => {
+    const checkAdmin = async () => {
+      if (user) {
+        const userRef = doc(db, "users", user.uid);
+        const userSnap = await getDoc(userRef);
+        if (userSnap.exists() && userSnap.data().role === "admin") {
+          setIsAdmin(true);
+        }
+      } else {
+        setIsAdmin(false);
+      }
+    };
+    checkAdmin();
+  }, [user]);
 
   const handleNavLinkClick = () => {
     const navbarToggler = document.querySelector(".navbar-toggler");
     const navbarCollapse = document.getElementById("navbarNav");
-
     if (navbarToggler && navbarCollapse.classList.contains("show")) {
       navbarToggler.click();
     }
@@ -36,8 +49,7 @@ function Navbar() {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      toast.info("Logged out successfully", { autoClose: 2000 }); // Show toast for 2 seconds
-      // No navigate here — user stays on the current page
+      toast.info("Logged out successfully", { autoClose: 2000 });
     } catch (error) {
       toast.error("Logout failed");
     }
@@ -144,11 +156,23 @@ function Navbar() {
               </a>
             </li>
 
+            {isAdmin && (
+              <li className="nav-item">
+                <Link
+                  className={`nav-link ${scrolled ? "navlink-action" : ""}`}
+                  to="/admin"
+                  onClick={handleNavLinkClick}
+                >
+                  User Panel
+                </Link>
+              </li>
+            )}
+
             {user ? (
               <>
                 <li className="nav-item">
                   <span
-                    className={`nav-link interactive-color${
+                    className={`nav-link interactive-color ${
                       scrolled ? "navlink-action" : ""
                     }`}
                     style={{ cursor: "default" }}
@@ -191,3 +215,4 @@ function Navbar() {
 }
 
 export default Navbar;
+

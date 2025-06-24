@@ -53,7 +53,7 @@ function VideosPage() {
   }, []);
 
   const cleanedVideos = videos
-    .filter((v) => (v.type || "").toLowerCase() === "video")
+    .filter((v) => (v.type || "").toLowerCase() === "videos")
     .map((video) => ({
       ...video,
       id: video.id,

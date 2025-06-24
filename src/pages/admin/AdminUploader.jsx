@@ -1,12 +1,6 @@
 import { useEffect, useState } from "react";
 import { db } from "../../data/firebaseConfig";
-import {
-  doc,
-  setDoc,
-  getDoc,
-  getDocs,
-  collection,
-} from "firebase/firestore";
+import { doc, setDoc, getDoc, getDocs, collection } from "firebase/firestore";
 
 function AdminUploader() {
   const [type, setType] = useState("Shorts");
@@ -25,8 +19,8 @@ function AdminUploader() {
     category: "",
     additionalInfo: "",
     cover: "",
-    featured: true,
-    show: true,
+    featured: false,
+    show: false,
   });
 
   useEffect(() => {
@@ -95,12 +89,27 @@ function AdminUploader() {
     }
   };
 
+  // General function to get next number by counting docs in the collection
+  async function getNextNumber(collectionName) {
+    if (!collectionName) return 1;
+    const collectionRef = collection(db, collectionName.toLowerCase());
+    const snapshot = await getDocs(collectionRef);
+    return snapshot.size + 1;
+  }
+
   const slugify = (text) =>
     text
       .toLowerCase()
       .trim()
       .replace(/\s+/g, "-")
       .replace(/[^\w-]+/g, "");
+
+  // Generate slug with number prefix for both Shorts and Videos
+  async function generateSlugWithNumber(title, collectionName) {
+    const nextNumber = await getNextNumber(collectionName);
+    const slugTitle = slugify(title);
+    return `${nextNumber}-${slugTitle}`;
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -109,15 +118,18 @@ function AdminUploader() {
       return;
     }
     try {
-      const customId = slugify(formData.title);
+      const customId = await generateSlugWithNumber(formData.title, type);
+
       const docRef = doc(db, type.toLowerCase(), customId);
       await setDoc(docRef, {
         ...formData,
         type,
         createdAt: new Date(),
       });
+
       setLastAddedId(customId);
       alert(`Added successfully with ID: ${customId}`);
+
       setFormData({
         title: "",
         subTitle: "",
@@ -271,9 +283,7 @@ function AdminUploader() {
               checked={formData.featured}
               onChange={handleChange}
             />
-            <label className="form-check-label interactive-color">
-              Featured
-            </label>
+            <label className="form-check-label interactive-color">Featured</label>
           </div>
 
           <div className="form-check">
@@ -302,10 +312,7 @@ function AdminUploader() {
           <button className="btn mb-3" onClick={loadDataByDocId}>
             Load Data by Doc ID
           </button>
-          <button
-            className="btn mb-5"
-            onClick={() => setShowConfirmModal(true)}
-          >
+          <button className="btn mb-5" onClick={() => setShowConfirmModal(true)}>
             Update {type}
           </button>
 
@@ -317,13 +324,10 @@ function AdminUploader() {
         </div>
       </div>
 
-      {/* Modal */}
+      {/* Confirmation Modal */}
       {showConfirmModal && (
         <div className="modal fade show d-block" tabIndex="-1" role="dialog">
-          <div
-            className="modal-dialog modal-dialog-centered"
-            role="document"
-          >
+          <div className="modal-dialog modal-dialog-centered" role="document">
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title">Confirm Update</h5>
@@ -362,6 +366,5 @@ function AdminUploader() {
     </div>
   );
 }
-
 
 export default AdminUploader;

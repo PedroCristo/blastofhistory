@@ -106,8 +106,8 @@ function ShortsPage() {
   const pageTitle =
     pageTitles[normalizedCategory] || `${formatLabel(selectedCategory)} Shorts`;
 
-  if (loading) return <p>Loading videos...</p>;
-  if (error) return <p>Error loading videos: {error.message}</p>;
+  if (loading) return <p className="mt-5 mb-5">Loading videos...</p>;
+  if (error) return <p className="mt-5 mb-5">Error loading videos: {error.message}</p>;
 
   return (
     <div className="Shorts-page section p-0">

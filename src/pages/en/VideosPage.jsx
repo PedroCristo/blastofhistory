@@ -164,6 +164,7 @@ function VideosPage() {
                   detailsPage={true}
                   mode="link"
                   mt={true}
+                  video-card-video-details={false}
                 />
               </div>
             ))}

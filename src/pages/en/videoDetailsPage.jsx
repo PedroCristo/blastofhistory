@@ -40,7 +40,7 @@ function VideoDetailsPage() {
   const paragraphs = video.description ? video.description.split("\n\n") : [];
 
   return (
-    <div className="container section shorts-details video-container mt-5">
+    <div className="container section shorts-details video-container mt-2">
       <div className="row row-reverse-992px align-items-center mt-2">
         {/* Text Section */}
         <div className="col-md-7 col-100">
@@ -75,7 +75,7 @@ function VideoDetailsPage() {
             </p>
           ))}
           {video.additionalInfo && (
-            <span className="text-secondary sub-title box-shadow p-4 mt-4 d-inline-block">
+            <span className="text-secondary sub-title box-shadow p-4 mt-4 d-inline-block mb-2">
               {video.additionalInfo}
             </span>
           )}

@@ -50,9 +50,8 @@ function VideoCard({
     "video-card",
     "position-relative",
     "text-center",
-    "video-card-video-details",
     mt ? "mt-5" : "",
-    type === "Video" ? "expanded" : "",
+    type === "Videos" ? "expanded" : "",
     shortsDetails === true ? "video-card-shorts-details" : "",
     videoCardDetails === true ? "video-card-video-details" : "",
   ].join(" ");
@@ -156,8 +155,8 @@ function VideoCard({
                 style={{ height: "calc(100% - 56px)" }}
               >
                 <div
-                  className="ratio mt-5 ratio-16x9"
-                  style={{ height: "90%" }}
+                  className="ratio mt-1 ratio-16x9"
+                  style={{ height: "95%" }}
                 >
                   <ReactPlayer
                     url={`https://www.youtube.com/embed/${videoId}`}

@@ -30,10 +30,6 @@ body {
   overflow-x: hidden;
 }
 
-.container {
-  /* overflow: hidden; */
-}
-
 input:focus,
 textarea:focus,
 select:focus {
@@ -312,14 +308,15 @@ a:hover {
   background: rgba(128, 20, 20, 0);
 }
 
-/* .video-card-video-details:hover::before {
+.video-card-video-details::before {
   box-shadow: none !important;
-} */
+  background: none !important;
+}
 
 .video-card-shorts-details::before {
   top: -80px;
   height: 119%;
-}
+} 
 
 .video-card.expanded::before {
   width: 100% !important;
@@ -455,6 +452,10 @@ a:hover {
   cursor: pointer;
   margin-left: 50px !important;
   margin-top: -55px;
+}
+
+.video-detail-img-big:hover {
+  box-shadow: 10px 8px 16px rgba(245, 244, 244, 0.3) !important;
 }
 
 .video-container .paragraph {
@@ -624,4 +625,12 @@ footer {
   animation-fill-mode: forwards;
   /* Keeps the final state after animation */
   display: none !important;
+}
+
+/*******************************
+*          ADMIN PAGE          *
+*******************************/
+.add-video-page .row{
+  margin-top: 110px !important;
+
 }

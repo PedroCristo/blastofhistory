@@ -13,72 +13,70 @@ function formatLabel(str = "") {
   return str
     .replace(/_/g, " ")
     .split(" ")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
     .join(" ");
 }
 
-// Helper function to clean strings of extra quotes and trim
-const cleanString = (str) => {
-  if (typeof str === "string") {
-    return str.replace(/^"(.*)"$/, "$1").trim();
-  }
-  return str;
-};
+// Clean up string fields
+const cleanString = (str) =>
+  typeof str === "string" ? str.replace(/^"(.*)"$/, "$1").trim() : str;
 
-function VideosPage() {
+export default function VideosPage() {
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  // initial filter state: category:All
+  const [selectedFilter, setSelectedFilter] = useState("category:All");
 
   useEffect(() => {
     async function fetchVideos() {
       setLoading(true);
       try {
-        const querySnapshot = await getDocs(collection(db, "videos"));
-        const videoData = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }))
-        .filter((video) => video.show !== false); 
-        setVideos(videoData);
-      } catch (err) {
-        setError(err);
-        console.error(err);
+        const snap = await getDocs(collection(db, "videos"));
+        const data = snap.docs
+          .map((d) => ({ id: d.id, ...d.data() }))
+          .filter((v) => v.show !== false);
+        setVideos(data);
+      } catch (e) {
+        console.error(e);
+        setError(e);
       } finally {
         setLoading(false);
       }
     }
-
     fetchVideos();
   }, []);
 
-  const cleanedVideos = videos
+  const cleaned = videos
     .filter((v) => (v.type || "").toLowerCase() === "videos")
-    .map((video) => ({
-      ...video,
-      id: video.id,
-      category: cleanString(video.category),
-      cover: cleanString(video.cover),
-      year: video.year,
-      videoId: cleanString(video.videoId),
-      subTitle: cleanString(video.subTitle),
-      title: cleanString(video.title),
+    .map((v) => ({
+      ...v,
+      category: cleanString(v.category),
+      edition: cleanString(v.edition),
+      cover: cleanString(v.cover),
+      videoId: cleanString(v.videoId),
+      subTitle: cleanString(v.subTitle),
+      title: cleanString(v.title),
+      year: v.year,
     }));
 
-  const videoCategories = [
-    ...new Set(cleanedVideos.map((v) => v.category).filter(Boolean)),
+  // categories list
+  const categories = [
+    "All",
+    ...Array.from(new Set(cleaned.map((v) => v.category).filter(Boolean))),
   ];
-  const categories = ["All", ...videoCategories];
-  const normalizedCategory = normalizeKey(selectedCategory);
 
-  const filteredVideos =
-    selectedCategory === "All"
-      ? cleanedVideos
-      : cleanedVideos.filter(
-          (video) => normalizeKey(video.category) === normalizedCategory
-        );
+  // filter logic
+  const filtered =
+    selectedFilter === "category:All"
+      ? cleaned
+      : cleaned.filter((v) => {
+          const [type, value] = selectedFilter.split(":");
+          return normalizeKey(v[type]) === normalizeKey(value);
+        });
 
+  // background images
   const bgImages = {
     ALL: "/images/large/blast-of-history-all-2-banner.png",
     WWI: "/images/large/blast-of-history-WW1-banner.png",
@@ -89,24 +87,37 @@ function VideosPage() {
     COLDWAR: "/images/large/blast-of-history-cold-war-banner.png",
     AGEOFEXPLORATION:
       "/images/large/blast-of-history-age-of-exploration-banner.png",
+    BLASTOFHISTORY: "/images/large/blast-of-history-all-2-banner.png",
+    SKYLEGENDS: "/images/large/blast-of-history-sky-legends-banner.png",
   };
 
   const pageTitles = {
     ALL: "All Videos",
     WWI: "WWI Videos",
     WWII: "WWII Videos",
-    MISTERY: "Mystery Videos",
     SKYLEGENDS: "Sky Legends Videos",
     CRIME: "Crime Videos",
+    MISTERY: "Mystery Videos",
     AGEOFEXPLORATION: "Age of Exploration Videos",
   };
 
-  const backgroundUrl = bgImages[normalizedCategory] || bgImages["ALL"];
-  const pageTitle =
-    pageTitles[normalizedCategory] || `${formatLabel(selectedCategory)} Videos`;
+  let backgroundKey = "ALL";
+  let pageTitle = "All Videos";
 
-  if (loading) return <p>Loading videos...</p>;
-  if (error) return <p>Error loading videos: {error.message}</p>;
+  if (selectedFilter) {
+    const [type, value] = selectedFilter.split(":");
+    const key = normalizeKey(value);
+    backgroundKey = bgImages[key] ? key : "ALL";
+    pageTitle =
+      type === "category"
+        ? pageTitles[key] || `${formatLabel(value)} Videos`
+        : `${formatLabel(value)} Series Videos`;
+  }
+
+  const backgroundUrl = bgImages[backgroundKey];
+
+  if (loading) return <p className="mt-5">Loading videos...</p>;
+  if (error) return <p className="mt-5">Error: {error.message}</p>;
 
   return (
     <div className="Videos-page section p-0">
@@ -117,7 +128,6 @@ function VideosPage() {
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundAttachment: "scroll",
         }}
       >
         <div className="zoom-bg-layer" />
@@ -127,28 +137,45 @@ function VideosPage() {
         </div>
       </section>
 
-      <div className="container-xxl d-flex justify-content-center flex-wrap gap-2 buttons-box">
-        {categories.map((category) => (
-          <button
-            key={category}
-            className={`btn ${
-              selectedCategory === category
-                ? "interactive-bg"
-                : "btn-outline-primary"
-            }`}
-            onClick={() => setSelectedCategory(category)}
-          >
-            {formatLabel(category)}
-          </button>
-        ))}
+      <div className="container-xxl mt-4 mb-4">
+        <div className="row">
+          <div className="col-md-12 d-flex flex-column align-items-end">
+            <h3 className="interactive-color mb-0">
+              Filter by Category or Edition
+            </h3>
+            <select
+              className="form-select w-auto mt-2"
+              value={selectedFilter}
+              onChange={(e) => setSelectedFilter(e.target.value)}
+            >
+              <option value="category:All">All</option>
+              <optgroup label="Categories">
+                {categories
+                  .filter((c) => c !== "All")
+                  .map((c) => (
+                    <option key={c} value={`category:${c}`}>
+                      {c}
+                    </option>
+                  ))}
+              </optgroup>
+              <optgroup label="Editions">
+                {["Blast of History", "Sky Legends"].map((ed) => (
+                  <option key={ed} value={`edition:${ed}`}>
+                    {ed}
+                  </option>
+                ))}
+              </optgroup>
+            </select>
+          </div>
+        </div>
       </div>
 
-      {filteredVideos.length === 0 ? (
-        <p className="text-center mt-5">No videos found in this category.</p>
-      ) : (
-        <div className="container-fluid">
-          <div className="row section">
-            {filteredVideos.map((video) => (
+      <div className="container-fluid">
+        <div className="row section video-container">
+          {filtered.length === 0 ? (
+            <h2 className="text-center mt-5 mb-5">No videos found for this search!! </h2>
+          ) : (
+            filtered.map((video) => (
               <div
                 key={video.id}
                 className="col-lg-3 col-md-6 col-sm-12 mt-2 mb-5 d-flex justify-content-center"
@@ -161,18 +188,15 @@ function VideosPage() {
                   year={video.year}
                   videoId={video.videoId}
                   type={video.type}
-                  detailsPage={true}
                   mode="link"
+                  detailsPage={true}
                   mt={true}
-                  video-card-video-details={false}
                 />
               </div>
-            ))}
-          </div>
+            ))
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 }
-
-export default VideosPage;

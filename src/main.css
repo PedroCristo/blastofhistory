@@ -163,6 +163,18 @@ a:hover {
   color: var(--text-color-white) !important;
 }
 
+select {
+  border: 1px solid var(--interactive-color) !important;
+  border-radius: 0 !important;
+  background-color: rgb(65, 57, 57) !important;
+  color: #e7e0e0 !important;
+  cursor: pointer;
+}
+
+select.form-select option:checked {
+  background-color: var(--interactive-color);  /* your desired bg */
+}
+
 /*******************************
 *            NAVBAR           *
 *******************************/
@@ -421,6 +433,14 @@ a:hover {
 
 .buttons-box {
   margin-bottom: -120px;
+}
+
+.video-container {
+  margin-top: -50px !important;
+}
+
+.video-shorts-container {
+  margin-top: 50px !important;
 }
 
 /*******************************

@@ -21,6 +21,7 @@ function AdminUploader() {
     cover: "",
     featured: false,
     show: false,
+    soundOption: "Default", // Added soundOption default value
   });
 
   useEffect(() => {
@@ -80,6 +81,7 @@ function AdminUploader() {
         cover: data.cover || "",
         featured: data.featured ?? true,
         show: data.show ?? true,
+        soundOption: data.soundOption || "Default", // load soundOption
       });
 
       alert(`Loaded document ID: ${docIdToLoad}`);
@@ -89,7 +91,6 @@ function AdminUploader() {
     }
   };
 
-  // General function to get next number by counting docs in the collection
   async function getNextNumber(collectionName) {
     if (!collectionName) return 1;
     const collectionRef = collection(db, collectionName.toLowerCase());
@@ -104,7 +105,6 @@ function AdminUploader() {
       .replace(/\s+/g, "-")
       .replace(/[^\w-]+/g, "");
 
-  // Generate slug with number prefix for both Shorts and Videos
   async function generateSlugWithNumber(title, collectionName) {
     const nextNumber = await getNextNumber(collectionName);
     const slugTitle = slugify(title);
@@ -142,6 +142,7 @@ function AdminUploader() {
         cover: "",
         featured: true,
         show: true,
+        soundOption: "Default", // reset to default
       });
       setDocIdToLoad("");
     } catch (err) {
@@ -274,6 +275,18 @@ function AdminUploader() {
             onChange={handleChange}
             required
           />
+
+          {/* New Sound Option Select */}
+          <select
+            className="form-control mb-2"
+            name="soundOption"
+            value={formData.soundOption}
+            onChange={handleChange}
+          >
+            <option value="Default">Sound</option>
+            <option value="Normal">Normal</option>
+            <option value="8D">8D</option>
+          </select>
 
           <div className="form-check">
             <input

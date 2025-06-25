@@ -158,6 +158,16 @@
     font-size: 2.5rem;
   }
 
+  /* Video Card */
+  .video-card img.w-75 {
+    width: 100% !important;
+    margin-top: 30px !important;
+  }
+
+  .video-card::before {
+    width: 100%;
+  }
+
   /* Zoom Background */
   .zoom-background {
     height: 30vh !important;
@@ -186,7 +196,7 @@
     transform: scale(1);
   }
 
-  .video-container .row{
+  .video-container .row {
     margin-top: 90px !important;
   }
 }

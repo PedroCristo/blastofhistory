@@ -191,7 +191,7 @@ function ShortsPage() {
             filteredVideos.map((video) => (
               <div
                 key={video.id}
-                className="col-lg-3 col-md-6 col-sm-12 mt-5 d-flex justify-content-center"
+                className="col-lg-3 col-md-4 col-sm-6 col-12 mt-5 d-flex justify-content-center"
                 data-aos="fade-u"
               >
                 <VideoCard

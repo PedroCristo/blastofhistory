@@ -63,7 +63,7 @@ function VideoCardList({ showFeaturedOnly = false }) {
           return (
             <div
               key={video.id}
-              className="col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center"  data-aos="fade-up"
+              className="col-lg-3 col-md-4 col-sm-6 col-12 d-flex justify-content-center"  data-aos="fade-up"
             >
              <VideoCard
                 id={video.id}

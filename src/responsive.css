@@ -93,7 +93,7 @@
   .banner .title {
     padding: 25px !important;
     width: 100% !important;
-    font-size: 1.8rem;
+    font-size: 2.8rem;
   }
 
   .banner img,
@@ -135,6 +135,7 @@
   .form {
     margin-top: -50px !important;
   }
+
 }
 
 @media only screen and (max-width: 663px) {
@@ -168,17 +169,16 @@
     width: 100%;
   }
 
-.container-title {
-  position: absolute;
-  width: 120%;
-  left: 50%;
-  transform: translateX(-50%);
-}
+  .container-title {
+    position: absolute;
+    width: 130%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
-.container-title .sub-title{
-  font-size: 1.85rem;
-
-}
+  .container-title .sub-title {
+    font-size: 1.85rem;
+  }
 
   /* Zoom Background */
   .zoom-background {
@@ -211,13 +211,22 @@
   .video-container .row {
     margin-top: 90px !important;
   }
+
+  /* Banner */
+  .banner .title {
+    font-size: 1.3rem !important;
+  }
 }
+
 
 @media only screen and (max-width: 450px) {
 
   /* Hero Section */
   #heroSection {
     padding: 0 !important;
+    margin-top: 20px;
+    background-image: none !important;
+    
   }
 
   #heroSection .title {
@@ -233,6 +242,11 @@
   /* Shorts/Video Destails*/
   .shorts-details h4.subtitle {
     font-size: 1.4rem !important;
+  }
+
+  /* Video Card */
+  .container-title .sub-title {
+    font-size: 1.rem;
 
   }
 
@@ -247,8 +261,8 @@
   }
 
   /* Hero Section */
-  #heroSection .title {
-    margin-top: 120px !important;
+  #heroSection  {
+    margin-top: 70px !important;
   }
 
   #heroSection .btn {
@@ -260,8 +274,8 @@
     gap: 0.3rem !important;
   }
 
-  /* Card List */
-  .video-card {
-    margin-top: -10px !important;
+  /* Video Card */
+    .video-card:not(:first-child) {
+    margin-top: -56px !important;
   }
 }

@@ -172,7 +172,8 @@ select {
 }
 
 select.form-select option:checked {
-  background-color: var(--interactive-color);  /* your desired bg */
+  background-color: var(--interactive-color);
+  /* your desired bg */
 }
 
 /*******************************
@@ -230,10 +231,22 @@ select.form-select option:checked {
 #heroSection {
   background-image: radial-gradient(circle at bottom, rgba(255, 255, 255, 0.5), transparent 40%), url(images/large/hero-section-1.png);
   overflow: hidden !important;
+  height: 100vh;
+  margin-top: -40px;
 }
 
 #heroSection .container {
   z-index: 10;
+}
+
+video.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-height: 100vh;
+  object-fit: cover;
+  z-index: 0;
 }
 
 .hero-wrapper {
@@ -292,7 +305,7 @@ select.form-select option:checked {
   display: block;
   width: 100%;
   max-width: 400px;
-  margin-top: -150px;
+  margin-top: -80px;
   transition: all 3s ease-in-out !important;
   cursor: pointer;
   z-index: 1000 !important;
@@ -328,7 +341,7 @@ select.form-select option:checked {
 .video-card-shorts-details::before {
   top: -80px;
   height: 119%;
-} 
+}
 
 .video-card.expanded::before {
   width: 100% !important;
@@ -355,6 +368,7 @@ select.form-select option:checked {
 
 .card-list .col-lg-3 {
   margin-bottom: 200px;
+  margin-top: 1000 !important;
   z-index: 2;
 }
 
@@ -650,7 +664,7 @@ footer {
 /*******************************
 *          ADMIN PAGE          *
 *******************************/
-.add-video-page .row{
+.add-video-page .row {
   margin-top: 110px !important;
 
 }

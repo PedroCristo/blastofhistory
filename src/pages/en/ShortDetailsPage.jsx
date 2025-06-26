@@ -110,7 +110,7 @@ function ShortsDetailsPage() {
 
           {video.additionalInfo && (
             <span className="text-secondary sub-title box-shadow p-4 mt-4 d-inline-block">
-              {video.additionalInfo}
+              <i class="bi bi-quote interactive-color"></i>{video.additionalInfo}<i class="bi bi-quote interactive-color"></i>
             </span>
           )}
         </div>

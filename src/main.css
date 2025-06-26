@@ -232,7 +232,6 @@ select.form-select option:checked {
   background-image: radial-gradient(circle at bottom, rgba(255, 255, 255, 0.5), transparent 40%), url(images/large/hero-section-1.png);
   overflow: hidden !important;
   height: 100vh;
-  margin-top: -40px;
 }
 
 #heroSection .container {

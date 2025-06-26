@@ -1,14 +1,23 @@
+import React from "react";
 import SubscribeButton from "./extra/BtnSubcribeChanel";
 import { Link } from "react-router-dom";
-import heroVideo from "/videos/video.mp4"; // Adjust path as needed
+
+import heroVideo1 from "../../public/videos/large/video_blast_of_history_age_of_exploration_compressed_yourtube.mp4";
+import heroVideo2 from "../../public/videos/large/video_blast_of_history_WW2_compressed_yourtube_format.mp4";
 
 function HeroSection() {
+  const videos = [heroVideo1, heroVideo2];
+  const [selectedVideo] = React.useState(() => {
+    const randomIndex = Math.floor(Math.random() * videos.length);
+    return videos[randomIndex];
+  });
+
   return (
     <div>
       <div id="heroSection" className="container-100 set-b">
         <video
           className="hero-video w-100"
-          src={heroVideo}
+          src={selectedVideo}
           autoPlay
           loop
           muted

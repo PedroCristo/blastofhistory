@@ -156,7 +156,7 @@ function VideoCard({
               >
                 <div
                   className="ratio mt-1 ratio-16x9"
-                  style={{ height: "95%" }}
+                  style={{ height: "98%" }}
                 >
                   <ReactPlayer
                     url={`https://www.youtube.com/embed/${videoId}`}

@@ -161,12 +161,24 @@
   /* Video Card */
   .video-card img.w-75 {
     width: 100% !important;
-    margin-top: 30px !important;
+    margin-top: 0px !important;
   }
 
   .video-card::before {
     width: 100%;
   }
+
+.container-title {
+  position: absolute;
+  width: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.container-title .sub-title{
+  font-size: 1.85rem;
+
+}
 
   /* Zoom Background */
   .zoom-background {

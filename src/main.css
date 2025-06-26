@@ -262,10 +262,10 @@ select.form-select option:checked {
   /* start at right */
   bottom: 0;
   left: 0;
-  background: linear-gradient(to left,
-      rgba(0, 0, 0, 0.8) 0%,
+  background: linear-gradient(to right,
+      rgba(0, 0, 0, 0.8) 20%,
       /* solid black on right */
-      rgba(0, 0, 0, 0) 100%
+      rgba(209, 13, 13, 0) 100%
       /* transparent on left */
     );
   z-index: 1;

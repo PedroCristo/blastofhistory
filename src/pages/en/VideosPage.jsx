@@ -81,7 +81,6 @@ export default function VideosPage() {
     ALL: "/images/large/blast-of-history-all-2-banner.png",
     WWI: "/images/large/blast-of-history-WW1-banner.png",
     WWII: "/images/large/blast-of-history-ww2-banner.png",
-    SKYLEGENDS: "/images/large/blast-of-history-sky-legends-banner.png",
     CRIME: "/images/large/blast-of-history-crime-2-banner.png",
     MISTERY: "/images/large/blast-of-history-mistery-banner.png",
     COLDWAR: "/images/large/blast-of-history-cold-war-banner.png",

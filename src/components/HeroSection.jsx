@@ -2,10 +2,10 @@ import React from "react";
 import SubscribeButton from "./extra/BtnSubcribeChanel";
 import { Link } from "react-router-dom";
 
-import heroVideo1 from "../../public/videos/large/video_blast_of_history_age_of_exploration_compressed_yourtube.mp4";
-import heroVideo2 from "../../public/videos/large/video_blast_of_history_WW2_compressed_yourtube_format.mp4";
-import heroShorts1 from "../../public/videos/small/short_blast_of_history_age_of_exploration_compressed_yourtube.mp4";
-import heroShorts2 from "../../public/videos/small/short_blast_of_history_WW2_compressed_yourtube_format.mp4";
+import heroVideo1 from "/videos/large/video_blast_of_history_age_of_exploration_compressed_yourtube.mp4";
+import heroVideo2 from "/videos/large/video_blast_of_history_WW2_compressed_yourtube_format.mp4";
+import heroShorts1 from "/videos/small/short_blast_of_history_age_of_exploration_compressed_yourtube.mp4";
+import heroShorts2 from "/videos/small/short_blast_of_history_WW2_compressed_yourtube_format.mp4";
 
 function HeroSection() {
   const videos = [heroVideo1, heroVideo2];

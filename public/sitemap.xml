@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+  <url>
+    <loc>https://blastofhistory.netlify.app/</loc>
+    <lastmod>2025-06-27T11:12:25+00:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://blastofhistory.netlify.app/contact-page</loc>
+    <lastmod>2025-06-27T11:12:25+00:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://blastofhistory.netlify.app/about-page</loc>
+    <lastmod>2025-06-27T11:12:25+00:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://blastofhistory.netlify.app/shorts-page</loc>
+    <lastmod>2025-06-27T11:12:25+00:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://blastofhistory.netlify.app/videos-page</loc>
+    <lastmod>2025-06-27T11:12:25+00:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://blastofhistory.netlify.app/privacy-policy</loc>
+    <lastmod>2025-06-27T11:12:25+00:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://blastofhistory.netlify.app/login</loc>
+    <lastmod>2025-06-27T11:12:25+00:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://blastofhistory.netlify.app/reset-password</loc>
+    <lastmod>2025-06-27T11:12:25+00:00</lastmod>
+  </url>
+
+  <!-- Example dynamic video pages -->
+  <url>
+    <loc>https://blastofhistory.netlify.app/video/101</loc>
+    <lastmod>2025-06-27T11:12:25+00:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://blastofhistory.netlify.app/video/102</loc>
+    <lastmod>2025-06-27T11:12:25+00:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://blastofhistory.netlify.app/video/103</loc>
+    <lastmod>2025-06-27T11:12:25+00:00</lastmod>
+  </url>
+
+</urlset>

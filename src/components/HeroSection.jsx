@@ -4,20 +4,37 @@ import { Link } from "react-router-dom";
 
 import heroVideo1 from "../../public/videos/large/video_blast_of_history_age_of_exploration_compressed_yourtube.mp4";
 import heroVideo2 from "../../public/videos/large/video_blast_of_history_WW2_compressed_yourtube_format.mp4";
+import heroShorts1 from "../../public/videos/small/short_blast_of_history_age_of_exploration_compressed_yourtube.mp4";
+import heroShorts2 from "../../public/videos/small/short_blast_of_history_WW2_compressed_yourtube_format.mp4";
 
 function HeroSection() {
   const videos = [heroVideo1, heroVideo2];
+  const shorts = [heroShorts1, heroShorts2];
+
   const [selectedVideo] = React.useState(() => {
     const randomIndex = Math.floor(Math.random() * videos.length);
     return videos[randomIndex];
+  });
+
+  const [selectedShort] = React.useState(() => {
+    const randomIndex = Math.floor(Math.random() * shorts.length);
+    return shorts[randomIndex];
   });
 
   return (
     <div>
       <div id="heroSection" className="container-100 set-b">
         <video
-          className="hero-video w-100"
+          className="hero-video show-desktop w-100"
           src={selectedVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+        ></video>
+        <video
+          className="hero-video show-mobile w-100"
+          src={selectedShort}
           autoPlay
           loop
           muted

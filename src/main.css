@@ -666,6 +666,7 @@ footer {
   animation-fill-mode: forwards;
   /* Keeps the final state after animation */
   display: none !important;
+  z-index: 87!important;
 }
 
 /*******************************

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
+import { HelmetProvider } from 'react-helmet-async';  
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./main.css";
@@ -43,12 +44,11 @@ function App() {
   }, []);
 
   return (
-    <>
+    <HelmetProvider>   {/* Wrap everything here */}
       <Routes>
         {/* Public Routes */}
         <Route path="/login" element={<Login />} />
         <Route path="/reset-password" element={<ResetPasswordWrapper />} />
-
         <Route path="/" element={<HomePage />} />
         <Route path="/contact-page" element={<ContactPage />} />
         <Route path="/about-page" element={<AboutPage />} />
@@ -59,7 +59,7 @@ function App() {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="*" element={<PageNotFound />} />
 
-        {/* 🔐 Protected Routes */}
+        {/* Protected Routes */}
         <Route
           path="/admin"
           element={
@@ -71,7 +71,7 @@ function App() {
       </Routes>
 
       <ToastContainer position="top-right" autoClose={5000} />
-    </>
+    </HelmetProvider>
   );
 }
 

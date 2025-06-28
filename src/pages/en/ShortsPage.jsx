@@ -93,7 +93,7 @@ function ShortsPage() {
     WWI: "/images/large/blast-of-history-WW1-banner.png",
     WWII: "/images/large/blast-of-history-ww2-banner.png",
     CRIME: "/images/large/blast-of-history-crime-2-banner.png",
-    MISTERY: "/images/large/blast-of-history-mistery-banner.png",
+    MYSTERY: "/images/large/blast-of-history-mistery-banner.png",
     COLDWAR: "/images/large/blast-of-history-cold-war-banner.png",
     AGEOFEXPLORATION: "/images/large/blast-of-history-age-of-exploration-banner.png",
     // Editions backgrounds (optional)
@@ -106,7 +106,7 @@ function ShortsPage() {
     ALL: "All Shorts",
     WWI: "WWI Shorts",
     WWII: "WWII Shorts",
-    MISTERY: "Mistery Shorts",
+    MYSTERY: "Mystery Shorts",
     SKYLEGENDS: "Sky Legends",
     CRIME: "Crime Shorts",
     AGEOFEXPLORATION: "Age of Exploration Shorts",

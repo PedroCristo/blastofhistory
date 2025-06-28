@@ -226,10 +226,6 @@
   .banner .title {
     font-size: 1.3rem !important;
   }
-
-  .cookie-banner.show {
-    display:  none !important;
-  }
 }
 
 

@@ -1,30 +1,32 @@
 import { Helmet } from "react-helmet-async";
-import ContactSection from "../../components/ContactForm";
+import AboutSection from "../../components/AboutSection";
 
-function ContactPage() {
+function AboutPage() {
   return (
     <div>
       <Helmet>
-        <title>Contact Blast of History</title>
+        <title>About US - Blast of History</title>
         <meta
           name="description"
-          content="Get in touch with Blast of History for questions, feedback, or collaborations."
+          content="Discover the story behind Blast of History, our mission to bring historical events to life, and the team that makes it possible."
         />
         <meta
           name="keywords"
-          content="history, blast of history, contact, feedback, collaboration"
+          content="history, blast of history, about us, our story, team"
         />
         <meta name="robots" content="index, follow" />
         <link
           rel="canonical"
-          href="https://blastofhistory.netlify.app/contact-page"
+          href="https://blastofhistory.netlify.app/about-page"
         />
       </Helmet>
 
-      <ContactSection />
+      <AboutSection />
     </div>
   );
 }
 
-export default ContactPage;
+export default AboutPage;
+
+
 

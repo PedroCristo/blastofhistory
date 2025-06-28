@@ -428,9 +428,16 @@ video.hero-video {
   margin-top: 100px !important;
 }
 
+.contact-form {
+  overflow: hidden !important;
+}
+
 /*******************************
 *          ABOUT SECTION      *
 *******************************/
+.about  {
+  overflow: hidden !important;
+}
 .about .title {
   margin-top: 100px;
 }
